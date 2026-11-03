@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web.Index — Four Minds. Infinite Possibilities.</title>
+<meta name="description" content="Independent creative coding collective of four developers.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090B10;--bg2:#11151D;--surface:#171D27;--elev:#202735;--violet:#B99AFF;--cyan:#70E9FF;--glow:rgba(185,154,255,.18);--text:#F3F6FB;--text2:#A5ADBB;--muted:#737F90;--border:rgba(255,255,255,.10);--border-hi:rgba(185,154,255,.40);--r-s:8px;--r-m:14px;--r-l:20px;--r-xl:28px;--maxw:1200px;--pad:40px;--head:"Space Grotesk",system-ui,sans-serif;--body:Inter,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+@media(max-width:1023px){:root{--pad:28px}}@media(max-width:767px){:root{--pad:18px}}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.7 var(--body);overflow-x:hidden}
+h1,h2,h3,p{margin:0}h1,h2,h3{font-family:var(--head);line-height:1.05;letter-spacing:-.02em;font-weight:700}
+[lang=fa] body,[lang=fa] h1,[lang=fa] h2,[lang=fa] h3,[lang=fa] .mono,[lang=fa] button{font-family:Vazirmatn,sans-serif;letter-spacing:0;text-transform:none}
+[lang=fa] h1,[lang=fa] h2,[lang=fa] h3{line-height:1.3}
+a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:var(--r-s)}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}.sec{padding-block:clamp(64px,10vw,120px)}
+.mono{font:400 .8rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.h2{font-size:clamp(2.2rem,5.5vw,4.5rem);max-width:14ch;margin-top:16px}.lead{color:var(--text2);font-size:clamp(1rem,1.4vw,1.15rem);max-width:56ch}
+.hl{color:var(--violet);background:linear-gradient(transparent 70%,var(--glow) 70%)}
+.glass{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--r-l);box-shadow:0 20px 60px -20px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-l);padding:24px;transition:border-color .3s,box-shadow .3s,transform .3s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--border-hi);box-shadow:0 0 40px var(--glow);transform:translateY(-3px)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:var(--r-m);border:1px solid var(--border);font-weight:600;font-size:.95rem;background:transparent;color:var(--text);cursor:pointer;transition:border-color .25s,background .25s;font-family:inherit}
+.btn:hover{border-color:var(--border-hi);background:var(--glow)}.btn-p{background:var(--violet);color:#14101f;border-color:var(--violet)}.btn-p:hover{background:#cdb5ff}
+.tag{font:400 .75rem var(--mono);padding:3px 10px;border:1px solid var(--border);border-radius:99px;color:var(--text2)}.tags{display:flex;flex-wrap:wrap;gap:8px}
+.nav{position:sticky;top:12px;z-index:50;margin-top:12px}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 16px;background:rgba(17,21,29,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--border);border-radius:var(--r-l)}
+.nav-links{display:flex;gap:28px;font-size:.92rem;color:var(--text2)}.nav-links a:hover{color:var(--text)}.nav-r{display:flex;align-items:center;gap:10px}
+.nav .btn{padding:8px 16px;font-size:.85rem}.burger,.mpanel{display:none}
+.logo{display:inline-flex;align-items:center;gap:10px;font:700 1rem var(--head)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;padding-block:clamp(40px,8vw,96px)}
+.hero h1{font-size:clamp(2.8rem,7.5vw,6.5rem);margin-block:20px 24px}.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.art-hero{width:100%;max-width:520px;margin-inline:auto;display:block}
+.orb{transform-box:view-box;transform-origin:200px 200px;animation:spin 80s linear infinite}.orb2{animation-duration:120s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.team{display:grid;gap:16px;grid-template-columns:repeat(4,1fr);margin-top:48px}
+.avatar{width:64px;height:64px;border-radius:var(--r-m);margin-bottom:20px;display:block}
+.social{display:flex;gap:14px;margin-top:20px;color:var(--text2);font-size:.85rem}.social a:hover,.links a:hover{color:var(--violet)}
+.proj{display:grid;gap:16px;grid-template-columns:repeat(6,1fr);margin-top:48px}
+.p-lg{grid-column:span 4;grid-row:span 2}.p-md{grid-column:span 2}.p-sm{grid-column:2/6}
+.proj .card{padding:0;display:flex;flex-direction:column}.body{padding:20px 24px 24px;display:flex;flex-direction:column;gap:10px}
+.thumb{flex:1;min-height:160px;border-bottom:1px solid var(--border)}.art{display:block;width:100%;height:100%;min-height:150px}
+.links{display:flex;gap:16px;font-size:.85rem;color:var(--violet);padding-top:8px}
+.lab{display:grid;gap:16px;grid-template-columns:repeat(3,1fr);margin-top:48px}.lab .card{padding:0;height:300px}
+.cap{position:absolute;inset-inline:16px;bottom:16px;padding:14px 16px}
+.ghost{position:absolute;top:8px;inset-inline-end:16px;font:700 4rem/1 var(--head);color:transparent;-webkit-text-stroke:1px var(--border-hi)}
+.foot{border-top:1px solid var(--border);padding-block:64px 32px;background:var(--bg2)}
+.foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px}.foot h2{font-size:clamp(2rem,5vw,4rem);max-width:16ch;margin-top:20px}
+.foot ul{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px;color:var(--text2)}.foot ul a:hover{color:var(--text)}
+.foot-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font:400 .8rem var(--mono);color:var(--muted)}
+[dir=rtl] .flip{transform:scaleX(-1)}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;z-index:99;background:var(--surface);padding:8px 12px}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease-out,transform .6s ease-out}.js .rv.in{opacity:1;transform:none}
+@media(max-width:1023px){.hero,.two{grid-template-columns:1fr;gap:32px}.art-hero{max-width:400px}.team{grid-template-columns:repeat(2,1fr)}.p-lg{grid-column:span 6;grid-row:auto}.p-md{grid-column:span 3}.p-sm{grid-column:span 6}.lab{grid-template-columns:1fr}}
+@media(max-width:767px){.nav-links,.hide-m{display:none}.burger{display:inline-flex}.mpanel.open{display:flex;flex-direction:column;gap:12px;margin-top:8px;padding:20px}.team{grid-template-columns:1fr}.p-md{grid-column:span 6}.foot-top>div:last-child{gap:32px!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+
+/* Admin portal */
+.admin-launch{font-size:.78rem;padding:8px 12px;border-color:var(--border-hi);color:var(--violet)}
+.admin-layer{position:fixed;inset:0;z-index:200;background:rgba(4,6,10,.86);backdrop-filter:blur(18px);display:none;align-items:center;justify-content:center;padding:20px;overflow:auto}
+.admin-layer.show{display:flex}.admin-box{width:min(1060px,100%);max-height:min(850px,94vh);overflow:auto;background:#10151e;border:1px solid var(--border-hi);border-radius:22px;box-shadow:0 30px 100px #000b,0 0 60px rgba(185,154,255,.1)}
+.admin-login{width:min(440px,100%);padding:34px;margin:auto}.admin-brand{display:flex;align-items:center;gap:12px;margin-bottom:28px}.admin-brand .mark{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--border-hi);border-radius:12px;color:var(--violet);font-weight:700}
+.admin-login h2,.admin-main h2{font:700 clamp(1.6rem,3vw,2.2rem) var(--head);margin:0 0 10px}.admin-sub{color:var(--text2);font-size:.9rem;margin-bottom:24px}
+.admin-field{display:grid;gap:7px;margin:15px 0}.admin-field label{font: .72rem var(--mono);color:var(--text2);letter-spacing:.06em}.admin-field input,.admin-field textarea,.admin-field select{width:100%;background:#090d14;border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--text);font: .9rem var(--body);outline:none}.admin-field input:focus,.admin-field textarea:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(185,154,255,.1)}
+.admin-error{min-height:22px;color:#ff9caa;font-size:.8rem}.admin-note{font-size:.72rem;color:var(--muted);line-height:1.7;margin-top:16px}.admin-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(16,21,30,.95);backdrop-filter:blur(12px);z-index:2}.admin-head small{display:block;color:var(--muted);font: .65rem var(--mono);letter-spacing:.12em}.admin-head strong{font:700 1.1rem var(--head)}.admin-actions{display:flex;gap:8px;align-items:center}.admin-main{padding:24px}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.admin-tab{border:1px solid var(--border);background:transparent;color:var(--text2);border-radius:9px;padding:9px 14px;cursor:pointer;font-size:.8rem}.admin-tab.active{border-color:var(--border-hi);background:var(--glow);color:var(--violet)}
+.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.admin-stat{border:1px solid var(--border);border-radius:14px;padding:18px;background:linear-gradient(145deg,#1a2230,#11151d)}.admin-stat b{display:block;font:700 2rem var(--head);color:var(--violet)}.admin-stat span{font:.7rem var(--mono);color:var(--muted)}.admin-editor{display:none}.admin-editor.active{display:block}.admin-editor textarea{width:100%;min-height:390px;resize:vertical;background:#080c12;color:#c9d5e5;border:1px solid var(--border);border-radius:12px;padding:16px;font: .78rem/1.7 var(--mono);tab-size:2}.admin-editor p{color:var(--text2);font-size:.83rem;line-height:1.7}.admin-bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px}.admin-status{font-size:.78rem;color:var(--cyan);align-self:center}.admin-warning{border:1px solid rgba(255,190,100,.25);background:rgba(255,190,100,.06);border-radius:10px;padding:12px;color:#d9bd91;font-size:.75rem;line-height:1.65;margin:18px 0}
+.admin-close{border:1px solid var(--border);background:transparent;color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer}.admin-btn{border:1px solid var(--border-hi);background:var(--violet);color:#15111e;padding:10px 15px;border-radius:10px;font-weight:700;cursor:pointer;font-size:.8rem}.admin-btn.secondary{background:transparent;color:var(--text);border-color:var(--border)}
+@media(max-width:767px){.admin-launch{font-size:0;padding:8px 10px}.admin-launch:after{content:'⚙';font-size:16px}.admin-layer{padding:8px}.admin-box{max-height:97vh;border-radius:16px}.admin-login{padding:24px}.admin-head{padding:15px}.admin-main{padding:16px}.admin-stats{grid-template-columns:1fr}.admin-editor textarea{min-height:330px}}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <nav class="nav-in" aria-label="Main">
+    <a href="#main" aria-label="Web.Index" id="logo"></a>
+    <div class="nav-links"><a href="#about" data-i18n="n.about"></a><a href="#team" data-i18n="n.team"></a><a href="#projects" data-i18n="n.projects"></a><a href="#lab" data-i18n="n.lab"></a></div>
+    <div class="nav-r">
+      <div role="group" aria-label="Language" style="display:flex;gap:4px"><button class="btn" data-l="en" style="padding:6px 10px">EN</button><button class="btn" data-l="fa" style="padding:6px 10px">FA</button></div>
+      <a href="#contact" class="btn btn-p hide-m" data-i18n="n.contact"></a><button class="btn admin-launch" id="adminLaunch" type="button" title="Admin panel">⌘ Admin</button>
+      <button class="btn burger" id="burger" aria-expanded="false" aria-label="Menu" style="padding:8px">☰</button>
+    </div>
+  </nav>
+  <div class="glass mpanel" id="mp"><a href="#about" data-i18n="n.about"></a><a href="#team" data-i18n="n.team"></a><a href="#projects" data-i18n="n.projects"></a><a href="#lab" data-i18n="n.lab"></a><a href="#contact" class="btn btn-p" style="justify-content:center" data-i18n="n.contact"></a></div>
+</div></header>
+
+<main id="main">
+<section class="wrap hero" aria-labelledby="hh">
+  <div class="rv">
+    <p class="mono" data-i18n="h.tag"></p>
+    <h1 id="hh"></h1>
+    <p class="lead" data-i18n="h.desc"></p>
+    <div class="ctas"><a class="btn btn-p" href="#projects"><span data-i18n="h.c1"></span><span class="flip">→</span></a><a class="btn" href="#team"><span data-i18n="h.c2"></span><span class="flip">→</span></a></div>
+  </div>
+  <svg class="art-hero" viewBox="0 0 400 400" role="img" data-alt="h.alt" direction="ltr">
+    <defs><pattern id="gr" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+    <radialGradient id="gl"><stop stop-color="#B99AFF" stop-opacity=".35"/><stop offset="1" stop-color="#B99AFF" stop-opacity="0"/></radialGradient></defs>
+    <rect width="400" height="400" rx="28" fill="url(#gr)"/><circle cx="200" cy="200" r="190" fill="url(#gl)"/>
+    <circle cx="200" cy="200" r="70" fill="none" stroke="#B99AFF" stroke-opacity=".35"/>
+    <circle cx="200" cy="200" r="110" fill="none" stroke="#70E9FF" stroke-opacity=".5" stroke-dasharray="2 8"/>
+    <circle cx="200" cy="200" r="150" fill="none" stroke="#B99AFF" stroke-opacity=".35"/>
+    <circle cx="200" cy="200" r="190" fill="none" stroke="#B99AFF" stroke-opacity=".35" stroke-dasharray="2 8"/>
+    <g class="orb"><circle cx="200" cy="90" r="5" fill="#70E9FF"/><circle cx="200" cy="10" r="4" fill="#B99AFF"/></g>
+    <g class="orb orb2"><circle cx="350" cy="200" r="4" fill="#B99AFF"/><circle cx="90" cy="200" r="3" fill="#70E9FF"/></g>
+    <rect x="160" y="160" width="80" height="80" rx="22" fill="#171D27" stroke="#B99AFF" stroke-opacity=".6"/>
+    <path d="M176 182l10 36 14-24 14 24 10-36" fill="none" stroke="#F3F6FB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g font-family="monospace" font-size="11" fill="#A5ADBB"><text x="24" y="40">index.ts</text><text x="290" y="60">{ 4 minds }</text><text x="40" y="372">x:200 y:200</text><text x="300" y="360" fill="#70E9FF">v2026</text></g>
+  </svg>
+</section>
+
+<section id="about" class="sec wrap"><div class="two">
+  <div class="rv"><p class="mono" data-i18n="a.label"></p><h2 class="h2" data-i18n="a.h"></h2><p class="lead" style="margin-top:24px" data-i18n="a.p"></p><div class="meta" id="meta"></div></div>
+  <svg class="rv" viewBox="0 0 360 300" role="img" data-alt="a.alt" style="width:100%" direction="ltr">
+    <g fill="none" stroke-opacity=".5"><rect x="30" y="30" width="220" height="220" rx="14" stroke="#B99AFF"/><rect x="56" y="52" width="190" height="190" rx="14" stroke="#B99AFF" transform="rotate(6 140 140)"/><rect x="82" y="74" width="160" height="160" rx="14" stroke="#70E9FF" transform="rotate(12 140 140)"/><rect x="108" y="96" width="130" height="130" rx="14" stroke="#B99AFF" transform="rotate(18 140 140)"/></g>
+    <path d="M260 40v220M60 270h280" stroke="#fff" stroke-opacity=".12"/>
+    <text id="four" x="262" y="130" font-size="110" fill="none" stroke="#B99AFF" stroke-opacity=".45" font-family="Space Grotesk,sans-serif" font-weight="700">04</text>
+  </svg>
+</div></section>
+
+<section id="team" class="sec wrap"><div class="rv"><p class="mono" data-i18n="t.label"></p><h2 class="h2" data-i18n="t.h"></h2></div><div class="team" id="team-grid"></div></section>
+<section id="projects" class="sec wrap"><div class="rv"><p class="mono" data-i18n="p.label"></p><h2 class="h2" data-i18n="p.h"></h2></div><div class="proj" id="proj-grid"></div></section>
+<section id="lab" class="sec wrap"><div class="rv"><p class="mono" data-i18n="l.label"></p><h2 class="h2" data-i18n="l.h"></h2></div><div class="lab" id="lab-grid"></div></section>
+</main>
+
+<footer id="contact" class="foot"><div class="wrap">
+  <div class="foot-top">
+    <div><span id="logo2"></span><h2 data-i18n="f.slogan"></h2><p class="lead" style="margin-top:16px" data-i18n="h.sub"></p></div>
+    <div style="display:flex;gap:64px">
+      <div><p class="mono" data-i18n="f.nav"></p><ul><li><a href="#about" data-i18n="n.about"></a></li><li><a href="#team" data-i18n="n.team"></a></li><li><a href="#projects" data-i18n="n.projects"></a></li><li><a href="#lab" data-i18n="n.lab"></a></li></ul></div>
+      <div><p class="mono" data-i18n="f.social"></p><ul><li><a href="#">GitHub</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Web</a></li></ul></div>
+    </div>
+  </div>
+  <div class="foot-bot"><span data-i18n="f.rights"></span><span data-i18n="f.stmt"></span></div>
+</div></footer>
+
+
+<div class="admin-layer" id="adminLayer" role="dialog" aria-modal="true" aria-label="Web.Index administration">
+  <div class="admin-box" id="adminBox">
+    <section class="admin-login" id="adminLogin">
+      <div class="admin-brand"><span class="mark">W.</span><div><strong>Web.Index</strong><div class="mono">CONTROL CENTER</div></div></div>
+      <p class="mono" style="color:var(--violet);margin-bottom:10px" id="loginEyebrow">ADMIN ACCESS / 01</p>
+      <h2 id="loginTitle">Welcome back.</h2><p class="admin-sub" id="loginSub">Sign in to manage your website.</p>
+      <form id="adminAuthForm">
+        <div class="admin-field"><label for="adminUser">USERNAME</label><input id="adminUser" autocomplete="username" required minlength="3" placeholder="Your admin username"></div>
+        <div class="admin-field"><label for="adminPass">PASSWORD</label><input id="adminPass" type="password" autocomplete="current-password" required minlength="8" placeholder="Your password"></div>
+        <div class="admin-field" id="confirmField" hidden><label for="adminPassConfirm">CONFIRM PASSWORD</label><input id="adminPassConfirm" type="password" autocomplete="new-password" minlength="8" placeholder="Repeat password"></div>
+        <button class="admin-btn" id="authSubmit" type="submit" style="width:100%;margin-top:8px">Sign in ↗</button>
+        <div class="admin-error" id="authError" role="alert"></div>
+      </form>
+      <p class="admin-note" id="setupNote">First time here? This browser will guide you through creating the initial admin account.</p>
+    </section>
+    <section id="adminDashboard" hidden>
+      <header class="admin-head"><div><small>WEB.INDEX / PRIVATE AREA</small><strong>Control Center</strong></div><div class="admin-actions"><button class="admin-btn secondary" id="adminLogout">Sign out</button><button class="admin-close" id="adminClose" aria-label="Close panel">✕</button></div></header>
+      <div class="admin-main">
+        <div class="admin-tabs" role="tablist"><button class="admin-tab active" data-panel="overview">Overview</button><button class="admin-tab" data-panel="content">Content editor</button><button class="admin-tab" data-panel="account">Account</button></div>
+        <section class="admin-editor active" id="panel-overview"><p class="mono" style="color:var(--violet)">SYSTEM / OVERVIEW</p><h2>Website at a glance.</h2><p>Manage the content and configuration of your Web.Index website from one place.</p><div class="admin-stats"><div class="admin-stat"><b>04</b><span>TEAM MEMBERS</span></div><div class="admin-stat"><b>04</b><span>PROJECT SLOTS</span></div><div class="admin-stat"><b>03</b><span>LAB EXPERIMENTS</span></div></div><div class="admin-warning">This is a standalone HTML prototype. The account and edits are stored in this browser only. Do not use it as production authentication or as protection for private server data.</div><button class="admin-btn" data-goto="content">Open content editor ↗</button></section>
+        <section class="admin-editor" id="panel-content"><p class="mono" style="color:var(--violet)">CONTENT / CONFIGURATION</p><h2>Manage the whole website.</h2><p>Edit the JSON configuration below to update English and Persian copy, team profiles, projects, and lab experiments. Keep the JSON structure valid.</p><div class="admin-field"><label for="contentJson">SITE CONTENT JSON</label><textarea id="contentJson" spellcheck="false"></textarea></div><div class="admin-bottom"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="admin-btn" id="saveContent">Save changes</button><button class="admin-btn secondary" id="resetContent">Restore defaults</button><button class="admin-btn secondary" id="exportContent">Export JSON</button></div><span class="admin-status" id="contentStatus" aria-live="polite"></span></div></section>
+        <section class="admin-editor" id="panel-account"><p class="mono" style="color:var(--violet)">SECURITY / LOCAL ACCOUNT</p><h2>Administrator account.</h2><p>Change the username and password used by this browser's local prototype.</p><form id="changeCredentials"><div class="admin-field"><label for="newUsername">NEW USERNAME</label><input id="newUsername" minlength="3" required autocomplete="username"></div><div class="admin-field"><label for="currentPassword">CURRENT PASSWORD</label><input id="currentPassword" type="password" required autocomplete="current-password"></div><div class="admin-field"><label for="newPassword">NEW PASSWORD (8+ CHARACTERS)</label><input id="newPassword" type="password" minlength="8" required autocomplete="new-password"></div><button class="admin-btn" type="submit">Update credentials</button><span class="admin-status" id="accountStatus" aria-live="polite"></span></form></section>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+document.documentElement.classList.add("js");
+const L={
+en:{skip:"Skip to content","n.about":"About","n.team":"Team","n.projects":"Projects","n.lab":"Lab","n.contact":"Contact",
+"h.tag":"Four Minds. Infinite Possibilities.","h.pre":"We turn ideas into ","h.hl":"interfaces","h.post":".",
+"h.desc":"Four curious minds exploring the space between design and code. We prototype fast, experiment boldly, and build digital experiences worth remembering.",
+"h.c1":"Explore Our Work","h.c2":"Meet The Team","h.sub":"Designing Ideas. Building Experiences. Exploring the Web.","h.alt":"Abstract orbital artwork with the Web.Index W symbol",
+"a.label":"01 / WHO WE ARE","a.h":"More than code. A collective of ideas.","a.p":"Web.Index is an independent creative collective of four developers. We explore web technologies, design interfaces, run experiments, and build digital experiences together.",
+"a.meta":["Est. 2026","4 developers","Independent"],"a.alt":"Geometric graphic of nested squares","a.four":"04",
+"t.label":"02 / THE PEOPLE","t.h":"Four minds. One creative direction.","t.name":"Member Name","t.role":"Developer Role","t.bio":"Short placeholder biography. Replace this with a real introduction.","t.social":["GitHub","LinkedIn","Portfolio"],
+"p.label":"03 / SELECTED WORK","p.h":"Things we've brought to life.","p.title":"Project Title","p.cat":["Featured Project","Web App","Interactive","Experiment"],"p.desc":"Short placeholder description of the project.","p.demo":"Demo","p.repo":"Repository",
+"l.label":"04 / EXPERIMENTS","l.h":"Curiosity has no framework.","l.items":["Generative Field","Type in Motion","Interface Study"],"l.d":"Placeholder experiment note.",
+"f.slogan":"Four Minds. Infinite Possibilities.","f.stmt":"A visual prototype. Built with HTML, CSS and curiosity.","f.rights":"© 2026 Web.Index. All rights reserved.","f.nav":"Navigate","f.social":"Social"},
+fa:{skip:"پرش به محتوا","n.about":"درباره","n.team":"تیم","n.projects":"پروژه‌ها","n.lab":"آزمایشگاه","n.contact":"تماس",
+"h.tag":"چهار ذهن. امکانات بی‌پایان.","h.pre":"ما ایده‌ها را به ","h.hl":"رابط‌های کاربری","h.post":" تبدیل می‌کنیم.",
+"h.desc":"چهار ذهن کنجکاو که فضای میان طراحی و کد را کاوش می‌کنند. سریع نمونه‌سازی می‌کنیم، جسورانه آزمایش می‌کنیم و تجربه‌های دیجیتالی می‌سازیم که ماندگار بمانند.",
+"h.c1":"نگاهی به کارهای ما","h.c2":"با تیم آشنا شوید","h.sub":"طراحی ایده‌ها. ساخت تجربه‌ها. کاوش در وب.","h.alt":"اثر هنری انتزاعی مداری با نماد W وب‌ایندکس",
+"a.label":"۰۱ / ما کی هستیم","a.h":"بیشتر از کد. جمعی از ایده‌ها.","a.p":"وب‌ایندکس یک گروه خلاق مستقل از چهار توسعه‌دهنده است. ما با هم فناوری‌های وب را کاوش می‌کنیم، رابط طراحی می‌کنیم، آزمایش می‌کنیم و تجربه‌های دیجیتال می‌سازیم.",
+"a.meta":["تأسیس ۲۰۲۶","۴ توسعه‌دهنده","مستقل"],"a.alt":"گرافیک هندسی از مربع‌های تودرتو","a.four":"۴",
+"t.label":"۰۲ / آدم‌ها","t.h":"چهار ذهن. یک مسیر خلاق.","t.name":"نام عضو","t.role":"نقش توسعه‌دهنده","t.bio":"زندگی‌نامه کوتاه نمونه. این متن را با معرفی واقعی جایگزین کنید.","t.social":["گیت‌هاب","لینکدین","نمونه‌کار"],
+"p.label":"۰۳ / کارهای منتخب","p.h":"چیزهایی که به زندگی آورده‌ایم.","p.title":"عنوان پروژه","p.cat":["پروژه ویژه","وب‌اپلیکیشن","تعاملی","آزمایشی"],"p.desc":"توضیح کوتاه نمونه درباره پروژه.","p.demo":"دمو","p.repo":"مخزن کد",
+"l.label":"۰۴ / آزمایش‌ها","l.h":"کنجکاوی چارچوب نمی‌شناسد.","l.items":["میدان مولد","تایپ در حرکت","مطالعه رابط"],"l.d":"یادداشت نمونه آزمایش.",
+"f.slogan":"چهار ذهن. امکانات بی‌پایان.","f.stmt":"یک نمونه اولیه بصری. ساخته‌شده با HTML، CSS و کنجکاوی.","f.rights":"© ۲۰۲۶ وب‌ایندکس. همه حقوق محفوظ است.","f.nav":"پیمایش","f.social":"شبکه‌ها"}};
+const defaultAdminContent={
+  translations:{en:{},fa:{}},
+  members:[
+    {name:{en:"Member Name 01",fa:"عضو اول"},role:{en:"Frontend Developer",fa:"توسعه‌دهنده فرانت‌اند"},bio:{en:"A short introduction about this member, their interests, and creative approach.",fa:"معرفی کوتاهی از این عضو، علایق و رویکرد خلاقانه او."},skills:["TypeScript","WebGL","React"]},
+    {name:{en:"Member Name 02",fa:"عضو دوم"},role:{en:"Creative Developer",fa:"توسعه‌دهنده خلاق"},bio:{en:"A short introduction about this member, their interests, and creative approach.",fa:"معرفی کوتاهی از این عضو، علایق و رویکرد خلاقانه او."},skills:["Design Systems","CSS","Motion"]},
+    {name:{en:"Member Name 03",fa:"عضو سوم"},role:{en:"UI Engineer",fa:"مهندس رابط کاربری"},bio:{en:"A short introduction about this member, their interests, and creative approach.",fa:"معرفی کوتاهی از این عضو، علایق و رویکرد خلاقانه او."},skills:["Node.js","APIs","Tooling"]},
+    {name:{en:"Member Name 04",fa:"عضو چهارم"},role:{en:"Web Developer",fa:"توسعه‌دهنده وب"},bio:{en:"A short introduction about this member, their interests, and creative approach.",fa:"معرفی کوتاهی از این عضو، علایق و رویکرد خلاقانه او."},skills:["Canvas","Shaders","Audio"]}
+  ],
+  projects:[
+    {title:{en:"Project Title 01",fa:"عنوان پروژه ۰۱"},category:{en:"Featured Project",fa:"پروژه ویژه"},description:{en:"Short placeholder description of the project.",fa:"توضیح کوتاه نمونه درباره پروژه."},tags:["HTML","SVG","CSS"],art:0,size:"lg",demo:"#",repo:"#"},
+    {title:{en:"Project Title 02",fa:"عنوان پروژه ۰۲"},category:{en:"Web App",fa:"وب‌اپلیکیشن"},description:{en:"Short placeholder description of the project.",fa:"توضیح کوتاه نمونه درباره پروژه."},tags:["JavaScript","D3"],art:1,size:"md",demo:"#",repo:"#"},
+    {title:{en:"Project Title 03",fa:"عنوان پروژه ۰۳"},category:{en:"Interactive",fa:"تعاملی"},description:{en:"Short placeholder description of the project.",fa:"توضیح کوتاه نمونه درباره پروژه."},tags:["Canvas","TypeScript"],art:2,size:"md",demo:"#",repo:"#"},
+    {title:{en:"Project Title 04",fa:"عنوان پروژه ۰۴"},category:{en:"Experiment",fa:"آزمایشی"},description:{en:"Short placeholder description of the project.",fa:"توضیح کوتاه نمونه درباره پروژه."},tags:["WebGL","GLSL"],art:3,size:"sm",demo:"#",repo:"#"}
+  ],
+  labs:[
+    {title:{en:"Generative Field",fa:"میدان مولد"},description:{en:"Placeholder experiment note.",fa:"یادداشت نمونه آزمایش."}},
+    {title:{en:"Type in Motion",fa:"تایپ در حرکت"},description:{en:"Placeholder experiment note.",fa:"یادداشت نمونه آزمایش."}},
+    {title:{en:"Interface Study",fa:"مطالعه رابط"},description:{en:"Placeholder experiment note.",fa:"یادداشت نمونه آزمایش."}}
+  ]
+};
+let adminContent=JSON.parse(JSON.stringify(defaultAdminContent));
+try{const saved=localStorage.getItem("wi-admin-content");if(saved)adminContent={...adminContent,...JSON.parse(saved)}}catch(e){}
+const members=adminContent.members.map(m=>m.skills||[]);
+const projects=adminContent.projects;
+const logo=s=>`<span class="logo"><svg width="${s}" height="${s}" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="#171D27" stroke="#B99AFF" stroke-opacity=".6"/><path d="M6 9l4 11 4-7 4 7 4-11" fill="none" stroke="#F3F6FB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span dir="ltr">Web.Index</span></span>`;
+const art=(v,label)=>{let s="";const g=`<linearGradient id="g${v}" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#B99AFF" stop-opacity=".7"/><stop offset="1" stop-color="#70E9FF" stop-opacity=".2"/></linearGradient>`;
+ for(let i=0;i<(v==3?24:v==1?14:v==2?12:9);i++){
+  if(v==0)s+=`<circle cx="130" cy="60" r="${8+i*10}" fill="none" stroke="url(#g0)"${i%3?"":' stroke-dasharray="2 4"'}/>`;
+  if(v==1){const h=14+(i*37)%80;s+=`<rect x="${8+i*13.5}" y="${112-h}" width="8" height="${h}" rx="2" fill="url(#g1)"/>`}
+  if(v==2)s+=`<path d="M0 ${8+i*9} Q100 ${i*16} 200 ${112-i*8}" fill="none" stroke="${i%4?"#B99AFF":"#70E9FF"}" stroke-opacity=".55"/>`;
+  if(v==3)s+=`<path d="M${12+(i%8)*24} ${20+Math.floor(i/8)*34} l9 16 h-18z" fill="${i%5?"none":"url(#g3)"}" stroke="#B99AFF" stroke-opacity=".5"/>`}
+ return `<svg class="art" viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${label}"><defs>${g}</defs><rect width="200" height="120" fill="#11151D"/>${s}</svg>`};
+let lang="en";try{lang=localStorage.getItem("wi-lang")==="fa"?"fa":"en"}catch(e){}
+const $=s=>document.querySelector(s),t=k=>(adminContent.translations?.[lang]?.[k] ?? L[lang][k]),num=i=>lang=="fa"?"۰"+(i+1):"0"+(i+1);
+const ic={gh:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3.1-.3 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-1 2.6V22"/></svg>'};
+function observe(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"-60px"});
+ document.querySelectorAll(".rv:not(.in)").forEach(el=>io.observe(el))}
+function render(){
+ const h=document.documentElement;h.lang=lang;h.dir=lang=="fa"?"rtl":"ltr";try{localStorage.setItem("wi-lang",lang)}catch(e){}
+ document.querySelectorAll("[data-i18n]").forEach(e=>e.textContent=t(e.dataset.i18n));
+ document.querySelectorAll("[data-alt]").forEach(e=>e.setAttribute("aria-label",t(e.dataset.alt)));
+ document.querySelectorAll("[data-l]").forEach(b=>{const on=b.dataset.l==lang;b.setAttribute("aria-pressed",on);b.style.color=on?"var(--violet)":"var(--text2)";b.style.borderColor=on?"var(--border-hi)":""});
+ $("#logo").innerHTML=logo(28);$("#logo2").innerHTML=logo(36);
+ $("#hh").innerHTML=`${t("h.pre")}<span class="hl">${t("h.hl")}</span>${t("h.post")}`;
+ $("#meta").innerHTML=t("a.meta").map(m=>`<span class="tag">${m}</span>`).join("");$("#four").textContent=t("a.four");
+ $("#team-grid").innerHTML=adminContent.members.map((m,i)=>`<article class="card rv"><svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="${m.name[lang]}"><rect width="64" height="64" fill="#202735"/><circle cx="32" cy="32" r="22" fill="none" stroke="#B99AFF" stroke-opacity=".6"${i%2?' stroke-dasharray="3 5"':""}/><circle cx="32" cy="32" r="10" fill="#B99AFF" fill-opacity="${.25+i*.12}"/><circle cx="${32+22*Math.cos(i*1.6)}" cy="${32+22*Math.sin(i*1.6)}" r="3" fill="#70E9FF"/></svg>
+ <h3 style="font-size:1.35rem">${m.name[lang]}</h3><p class="mono" style="margin:6px 0 12px">${m.role[lang]}</p><p style="color:var(--text2);font-size:.95rem;margin-bottom:16px">${m.bio[lang]}</p>
+ <div class="tags" dir="ltr">${m.skills.map(x=>`<span class="tag">${x}</span>`).join("")}</div><div class="social">${t("t.social").map(s=>`<a href="#">${s}</a>`).join("")}</div></article>`).join("");
+ $("#proj-grid").innerHTML=adminContent.projects.map((p,i)=>`<article class="card p-${p.size} rv${p.size=="lg"?" glass":""}"><div class="thumb">${art(p.art,p.title[lang])}</div><div class="body"><p class="mono">${p.category[lang]}</p>
+ <h3 style="font-size:${p.size=="lg"?"2rem":"1.3rem"}">${p.title[lang]}</h3><p style="color:var(--text2);font-size:.95rem">${p.description[lang]}</p><div class="tags" dir="ltr">${p.tags.map(x=>`<span class="tag">${x}</span>`).join("")}</div>
+ <div class="links"><a href="${p.demo||"#"}" target="_blank" rel="noopener">${t("p.demo")} <span class="flip" style="display:inline-block">↗</span></a><a href="${p.repo||"#"}" target="_blank" rel="noopener">${ic.gh} ${t("p.repo")}</a></div></div></article>`).join("");
+ $("#lab-grid").innerHTML=adminContent.labs.map((x,i)=>`<article class="card rv">${art((i+1)%4,x.title[lang])}<span class="ghost" aria-hidden="true" dir="ltr">${["{ }","Aa","</>"][i%3]}</span>
+ <div class="glass cap"><p class="mono">${num(i)}</p><h3 style="font-size:1.2rem">${x.title[lang]}</h3><p style="color:var(--text2);font-size:.9rem">${x.description[lang]}</p></div></article>`).join("");
+ observe()}
+document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{lang=b.dataset.l;render()});
+const bg=$("#burger"),mp=$("#mp");bg.onclick=()=>{const o=mp.classList.toggle("open");bg.setAttribute("aria-expanded",o);bg.textContent=o?"✕":"☰"};
+mp.querySelectorAll("a").forEach(a=>a.onclick=()=>{mp.classList.remove("open");bg.textContent="☰"});
+render();
+
+
+// Local prototype admin portal. Production authentication must be implemented server-side.
+const ADMIN_KEY="wi-admin-auth-v1", CONTENT_KEY="wi-admin-content";
+const adminLayer=$("#adminLayer"), loginPanel=$("#adminLogin"), dashboard=$("#adminDashboard");
+let setupMode=false;
+const enc=new TextEncoder();
+async function digestPassword(password,salt){const material=await crypto.subtle.importKey("raw",enc.encode(password),"PBKDF2",false,["deriveBits"]);const bits=await crypto.subtle.deriveBits({name:"PBKDF2",salt:enc.encode(salt),iterations:120000,hash:"SHA-256"},material,256);return [...new Uint8Array(bits)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+function openAdmin(){adminLayer.classList.add("show");document.body.style.overflow="hidden";showLogin();}
+function closeAdmin(){adminLayer.classList.remove("show");document.body.style.overflow="";}
+function showLogin(){const account=localStorage.getItem(ADMIN_KEY);setupMode=!account;loginPanel.hidden=false;dashboard.hidden=true;$("#confirmField").hidden=!setupMode;$("#loginTitle").textContent=setupMode?"Create your admin account.":"Welcome back.";$("#loginSub").textContent=setupMode?"Set a username and password for this browser.":"Sign in to manage your website.";$("#loginEyebrow").textContent=setupMode?"INITIAL SETUP / 01":"ADMIN ACCESS / 01";$("#authSubmit").textContent=setupMode?"Create account ↗":"Sign in ↗";$("#setupNote").textContent=setupMode?"Your account is stored only in this browser. Clearing browser data removes it.":"Use the username and password you created on this device.";$("#authError").textContent="";$("#adminUser").value="";$("#adminPass").value="";$("#adminPassConfirm").value="";}
+function showDashboard(){loginPanel.hidden=true;dashboard.hidden=false;$("#contentJson").value=JSON.stringify(adminContent,null,2);}
+$("#adminLaunch").addEventListener("click",openAdmin);$("#adminClose").addEventListener("click",closeAdmin);adminLayer.addEventListener("click",e=>{if(e.target===adminLayer)closeAdmin()});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&adminLayer.classList.contains("show"))closeAdmin()});
+$("#adminAuthForm").addEventListener("submit",async e=>{e.preventDefault();const username=$("#adminUser").value.trim(),password=$("#adminPass").value,error=$("#authError");error.textContent="";if(username.length<3||password.length<8){error.textContent="Username must be 3+ characters and password 8+ characters.";return}try{if(setupMode){if(password!==$("#adminPassConfirm").value){error.textContent="Passwords do not match.";return}const salt=crypto.randomUUID();const hash=await digestPassword(password,salt);localStorage.setItem(ADMIN_KEY,JSON.stringify({username,salt,hash}));showDashboard()}else{const account=JSON.parse(localStorage.getItem(ADMIN_KEY)||"null");const hash=await digestPassword(password,account.salt);if(username!==account.username||hash!==account.hash){error.textContent="Incorrect username or password.";return}showDashboard()}}catch(err){error.textContent="Authentication is unavailable in this browser context. Open the site through localhost or HTTPS."}});
+$("#adminLogout").addEventListener("click",showLogin);
+document.querySelectorAll(".admin-tab").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".admin-tab").forEach(b=>b.classList.toggle("active",b===btn));document.querySelectorAll(".admin-editor").forEach(p=>p.classList.toggle("active",p.id==="panel-"+btn.dataset.panel));if(btn.dataset.panel==="content")$("#contentJson").value=JSON.stringify(adminContent,null,2)}));
+document.querySelectorAll("[data-goto]").forEach(btn=>btn.addEventListener("click",()=>document.querySelector('[data-panel="'+btn.dataset.goto+'"]').click()));
+$("#saveContent").addEventListener("click",()=>{const status=$("#contentStatus");try{const parsed=JSON.parse($("#contentJson").value);if(!parsed||!Array.isArray(parsed.members)||!Array.isArray(parsed.projects)||!Array.isArray(parsed.labs)||!parsed.translations)throw new Error("Required keys: translations, members, projects, labs.");if(parsed.members.length>30||parsed.projects.length>60||parsed.labs.length>60)throw new Error("The content contains too many entries.");for(const m of parsed.members){if(!m.name?.en||!m.name?.fa||!m.role?.en||!m.role?.fa||!m.bio?.en||!m.bio?.fa||!Array.isArray(m.skills))throw new Error("Each member needs bilingual name, role, bio, and skills.")}for(const p of parsed.projects){if(!p.title?.en||!p.title?.fa||!p.category?.en||!p.category?.fa||!p.description?.en||!p.description?.fa||!Array.isArray(p.tags)||![0,1,2,3].includes(Number(p.art))||!['lg','md','sm'].includes(p.size))throw new Error("Each project needs bilingual text, tags, art (0–3), and size (lg/md/sm).")}for(const x of parsed.labs){if(!x.title?.en||!x.title?.fa||!x.description?.en||!x.description?.fa)throw new Error("Each lab item needs bilingual title and description.")}adminContent=parsed;localStorage.setItem(CONTENT_KEY,JSON.stringify(adminContent));render();status.textContent="Saved. The public website has been updated.";status.style.color="var(--cyan)"}catch(err){status.textContent=err.message;status.style.color="#ff9caa"}});
+$("#resetContent").addEventListener("click",()=>{if(!confirm("Restore all website content to its original defaults?"))return;adminContent=JSON.parse(JSON.stringify(defaultAdminContent));localStorage.setItem(CONTENT_KEY,JSON.stringify(adminContent));$("#contentJson").value=JSON.stringify(adminContent,null,2);render();$("#contentStatus").textContent="Default content restored."});
+$("#exportContent").addEventListener("click",()=>{const blob=new Blob([JSON.stringify(adminContent,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="web-index-content.json";a.click();URL.revokeObjectURL(url);$("#contentStatus").textContent="Content JSON exported."});
+$("#changeCredentials").addEventListener("submit",async e=>{e.preventDefault();const status=$("#accountStatus");try{const account=JSON.parse(localStorage.getItem(ADMIN_KEY)||"null"),current=$("#currentPassword").value,newPass=$("#newPassword").value,newUser=$("#newUsername").value.trim();if(await digestPassword(current,account.salt)!==account.hash)throw new Error("Current password is incorrect.");if(newUser.length<3||newPass.length<8)throw new Error("Username must be 3+ characters and password 8+ characters.");const salt=crypto.randomUUID(),hash=await digestPassword(newPass,salt);localStorage.setItem(ADMIN_KEY,JSON.stringify({username:newUser,salt,hash}));e.target.reset();status.textContent="Account updated on this browser.";status.style.color="var(--cyan)"}catch(err){status.textContent=err.message;status.style.color="#ff9caa"}});
+
+</script>
+</body>
+</html>
