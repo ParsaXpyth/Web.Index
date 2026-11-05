@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="fa" dir="rtl" data-theme="cyber-violet"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Web.Index Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
+<style nonce="{{N}}">
+:root{--bg:#090B10;--bg2:#11151D;--surface:#171D27;--violet:#B99AFF;--text:#F3F6FB;--text2:#A5ADBB;--border:rgba(255,255,255,.1);--glow:rgba(185,154,255,.18);--on:#14101f;--r:14px}
+:root[data-theme=midnight-lime]{--bg:#0B0B0C;--bg2:#141416;--surface:#141416;--violet:#C6F432;--text:#fff;--text2:#B7B7B7;--glow:rgba(198,244,50,.12);--r:8px}
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.6 Inter,Vazirmatn,system-ui,sans-serif}
+[lang=fa] body,[lang=fa] input,[lang=fa] textarea,[lang=fa] button{font-family:Vazirmatn,sans-serif}button,input,textarea{font:inherit;color:inherit}h1,h2{margin:0 0 8px}
+.btn{padding:10px 16px;border:1px solid var(--border);border-radius:var(--r);background:transparent;cursor:pointer;transition:border-color .2s,background .2s}.btn:hover{border-color:var(--violet);background:var(--glow)}.btn.p{background:var(--violet);color:var(--on);border-color:var(--violet)}.btn.d{color:#ff8a8a}
+input,textarea{width:100%;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r)}input[type=checkbox]{width:auto}
+input:focus,textarea:focus,.btn:focus-visible{outline:2px solid var(--violet);outline-offset:2px}label{display:block;margin:14px 0 6px;color:var(--text2);font-size:.85rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-top:16px}
+.login{min-height:100vh;display:grid;place-items:center;align-content:center;padding:18px;position:relative;overflow:hidden}.login .card{width:min(400px,100%);position:relative;z-index:1;animation:rise .5s both}
+.orbit{position:absolute;inset:0;margin:auto;width:min(720px,140vw);height:auto;color:var(--violet);opacity:.35;pointer-events:none}.mark{color:var(--violet);margin-bottom:12px}
+.back{position:relative;z-index:1;margin-top:16px;color:var(--text2);font-size:.85rem}.back:hover{color:var(--violet)}.pw{display:flex;gap:8px}#err{color:#ff8a8a;min-height:1.6em;margin:10px 0 0}
+.shell{display:grid;grid-template-columns:230px 1fr;min-height:100vh}aside{background:var(--bg2);border-inline-end:1px solid var(--border);padding:20px 14px;display:flex;flex-direction:column;gap:6px}
+aside .btn{text-align:start;border-color:transparent}aside .btn[aria-current=true]{border-color:var(--violet);background:var(--glow)}aside hr{flex:1;border:0}
+main.m{padding:24px;min-width:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}.stat b{display:block;font-size:2rem}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--border)}
+.badge{font-size:.75rem;padding:2px 10px;border:1px solid var(--border);border-radius:99px;color:var(--text2)}.badge.published{color:var(--violet);border-color:var(--violet)}
+.bar{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hint{color:var(--text2);font-size:.85rem}
+.mf{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pv{width:88px;height:64px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;display:grid;place-items:center;background:var(--bg2);color:var(--text2)}
+.pv img,.pv video,.mi img,.mi video{width:100%;height:100%;object-fit:cover;display:block}
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-top:14px}.mi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:8px;cursor:pointer;text-align:start;display:flex;flex-direction:column;gap:6px}
+.mi:hover{border-color:var(--violet)}.mi>img,.mi>video{height:90px;border-radius:calc(var(--r) / 2)}.mi span{font-size:.75rem;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+dialog{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:var(--r);width:min(720px,94vw);max-height:86vh}dialog::backdrop{background:rgba(0,0,0,.65)}
+#toast{position:fixed;inset-inline:16px;bottom:16px;max-width:360px;padding:12px 16px;background:var(--surface);border:1px solid var(--violet);border-radius:var(--r);display:none;z-index:99}#toast.show{display:block;animation:rise .25s both}#toast.bad{border-color:#ff8a8a}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+@media(max-width:767px){.shell{grid-template-columns:1fr}aside{flex-direction:row;overflow-x:auto;border-inline-end:0;border-bottom:1px solid var(--border);padding:10px}aside .btn{white-space:nowrap}aside hr,aside b{display:none}.two{grid-template-columns:1fr}main.m{padding:16px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<main id="login" class="login" hidden>
+<svg class="orbit" viewBox="0 0 400 400" aria-hidden="true" fill="none" stroke="currentColor"><circle cx="200" cy="200" r="70" stroke-opacity=".5"/><circle cx="200" cy="200" r="110" stroke-opacity=".6" stroke-dasharray="2 8"/><circle cx="200" cy="200" r="150" stroke-opacity=".5"/><circle cx="200" cy="200" r="190" stroke-opacity=".4" stroke-dasharray="2 8"/><circle cx="350" cy="200" r="4" fill="currentColor"/><circle cx="90" cy="200" r="3" fill="currentColor"/></svg>
+<form class="card" id="lf" novalidate><div class="mark"><svg width="36" height="36" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="none" stroke="currentColor" stroke-opacity=".6"/><path d="M6 9l4 11 4-7 4 7 4-11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<h1 data-i="login"></h1><label for="u" data-i="user"></label><input id="u" dir="ltr" autocomplete="username" required>
+<label for="p" data-i="pass"></label><div class="pw"><input id="p" type="password" dir="ltr" autocomplete="current-password" required><button type="button" class="btn" id="sh" data-i="show"></button></div>
+<p id="err" role="alert"></p><div class="bar"><button class="btn p" data-i="signin"></button><button type="button" class="btn" data-a="lang">EN</button><button type="button" class="btn" data-a="theme" aria-label="Theme">◐</button></div></form>
+<a class="back" href="/" data-i="backsite"></a></main>
+<div id="app" class="shell" hidden><aside><b>Web.Index</b>
+<button class="btn" data-a="nav" data-v="dash" data-i="n.dash"></button><button class="btn" data-a="nav" data-v="member" data-i="n.member"></button><button class="btn" data-a="nav" data-v="project" data-i="n.project"></button><button class="btn" data-a="nav" data-v="media" data-i="n.media"></button><hr>
+<button class="btn" data-a="lang">EN</button><button class="btn" data-a="theme" aria-label="Theme">◐</button><button class="btn" data-a="logout" data-i="out"></button></aside>
+<main class="m"><p id="who" class="hint"></p><div id="view"></div></main></div>
+<dialog id="pick" aria-labelledby="pt"><div class="row"><h2 id="pt" data-i="pickTitle"></h2><button class="btn" data-a="closepick" data-i="close"></button></div>
+<div class="bar"><button class="btn p" data-a="upload" data-i="upload"></button></div><p class="hint" data-i="limits"></p><div class="mg" id="pg"></div></dialog>
+<input type="file" id="fi" multiple hidden accept="image/jpeg,image/png,image/webp,video/mp4,video/webm"><div id="toast" role="status"></div>
+<script nonce="{{N}}">
+(()=>{
+const D=document.documentElement,$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>"&#"+c.charCodeAt(0)+";");
+let lang="fa",csrf="",data={members:[],projects:[],logs:[],media:[]},view="dash",ed=null,dirty=false,pickCb=null,pickKind="image";
+try{lang=localStorage.getItem("wi-lang")==="en"?"en":"fa";D.dataset.theme=localStorage.getItem("wi-theme")==="midnight-lime"?"midnight-lime":"cyber-violet"}catch(e){}
+const S={fa:{login:"ورود مدیر",user:"نام کاربری",pass:"گذرواژه",show:"نمایش",hide:"پنهان",signin:"ورود",invalid:"نام کاربری یا گذرواژه نادرست است.",throttled:"تلاش‌های زیاد. چند دقیقه بعد دوباره امتحان کنید.",neterr:"خطای شبکه یا سرور.",notcfg:"رمز هنوز تنظیم نشده است (فایل README).",backsite:"بازگشت به سایت",out:"خروج",
+"n.dash":"داشبورد","n.member":"اعضا","n.project":"پروژه‌ها","n.media":"رسانه",st_p:"پروژه‌های منتشرشده",st_m:"اعضای منتشرشده",st_d:"پیش‌نویس‌ها",st_f:"فایل‌های رسانه",st_u:"آخرین به‌روزرسانی",recent:"آخرین فعالیت‌ها",
+add:"پروژه جدید",edit:"ویرایش",draft:"ذخیره پیش‌نویس",publish:"انتشار",unpub:"لغو انتشار",del:"حذف",confirmDel:"این مورد حذف شود؟",saved:"ذخیره شد.",unsaved:"تغییرات ذخیره‌نشده از بین می‌رود. ادامه می‌دهید؟",
+s_draft:"پیش‌نویس",s_published:"منتشرشده",s_unpublished:"غیرمنتشر",name:"نام",role:"نقش",bio:"زندگی‌نامه",social:"لینک شبکه اجتماعی",title:"عنوان",desc:"توضیح",cat:"دسته‌بندی",tags:"فناوری‌ها (با ویرگول)",demo:"لینک دمو",repo:"لینک مخزن کد",featured:"پروژه ویژه",back:"بازگشت",member:"عضو",
+image:"عکس پروفایل",cover:"تصویر کاور",video:"ویدیو",choose:"انتخاب از رسانه",remove:"حذف",upload:"آپلود فایل",close:"بستن",pickTitle:"انتخاب رسانه",limits:"عکس JPG/PNG/WebP تا ۸ مگابایت • ویدیو MP4/WebM تا ۲۴ مگابایت",empty:"هنوز فایلی نیست.",uploading:"در حال آپلود",badfile:"فایل مجاز نیست یا حجمش زیاد است",inuse:"این فایل در جایی استفاده شده و حذف نمی‌شود."},
+en:{login:"Admin sign in",user:"Username",pass:"Password",show:"Show",hide:"Hide",signin:"Sign in",invalid:"Incorrect username or password.",throttled:"Too many attempts. Try again in a few minutes.",neterr:"Network or server error.",notcfg:"Password not set yet (see README).",backsite:"Back to site",out:"Log out",
+"n.dash":"Dashboard","n.member":"Members","n.project":"Projects","n.media":"Media",st_p:"Published projects",st_m:"Published members",st_d:"Drafts",st_f:"Media files",st_u:"Last update",recent:"Recent activity",
+add:"New project",edit:"Edit",draft:"Save draft",publish:"Publish",unpub:"Unpublish",del:"Delete",confirmDel:"Delete this item?",saved:"Saved.",unsaved:"Unsaved changes will be lost. Continue?",
+s_draft:"Draft",s_published:"Published",s_unpublished:"Unpublished",name:"Name",role:"Role",bio:"Biography",social:"Social link",title:"Title",desc:"Description",cat:"Category",tags:"Technologies (comma-separated)",demo:"Demo URL",repo:"Repository URL",featured:"Featured",back:"Back",member:"Member",
+image:"Profile photo",cover:"Cover image",video:"Video",choose:"Choose from media",remove:"Remove",upload:"Upload files",close:"Close",pickTitle:"Choose media",limits:"JPG/PNG/WebP images up to 8 MB • MP4/WebM video up to 24 MB",empty:"No files yet.",uploading:"Uploading",badfile:"File not allowed or too large",inuse:"This file is in use and can't be deleted."}};
+const t=k=>S[lang][k]||k,nf=n=>new Intl.NumberFormat(lang=="fa"?"fa-IR":"en").format(n),df=x=>x?new Date(x).toLocaleString(lang=="fa"?"fa-IR":"en"):"—",mb=n=>nf(+(n/1e6).toFixed(1))+" MB";
+function apply(){D.lang=lang;D.dir=lang=="fa"?"rtl":"ltr";try{localStorage.setItem("wi-lang",lang)}catch(e){}
+ $$("[data-i]").forEach(e=>e.textContent=t(e.dataset.i));$$("[data-a=lang]").forEach(b=>b.textContent=lang=="fa"?"EN":"FA");$("#sh").textContent=t($("#p").type=="password"?"show":"hide")}
+async function api(path,o={}){try{const r=await fetch(path,{method:o.method||"GET",credentials:"same-origin",headers:{"Content-Type":"application/json","X-CSRF-Token":csrf},body:o.body?JSON.stringify(o.body):undefined});
+ let j={};try{j=await r.json()}catch(e){}if(r.status==401&&!path.endsWith("/login"))showLogin();return{ok:r.ok,status:r.status,j}}catch(e){return{ok:false,status:0,j:{}}}}
+const toast=(m,bad)=>{const e=$("#toast");e.textContent=m;e.className="show"+(bad?" bad":"");setTimeout(()=>e.className="",3500)};
+const showLogin=()=>{$("#login").hidden=false;$("#app").hidden=true},showApp=()=>{$("#login").hidden=true;$("#app").hidden=false};
+async function load(){const r=await api("/api/admin/data");if(r.ok)data=r.j}
+async function boot(){const r=await api("/api/admin/me");if(!r.ok)return showLogin();csrf=r.j.csrf;$("#who").textContent=r.j.user;await load();showApp();show()}
+/* views */
+const pv=(k,id)=>id?(k=="video"?`<video src="/media/${id}#t=0.1" muted preload="metadata"></video>`:`<img src="/media/${id}" alt="">`):"—";
+function show(){ed=null;$$("[data-v]").forEach(b=>b.setAttribute("aria-current",b.dataset.v==view));const V=$("#view");
+ if(view=="dash"){const pub=k=>data[k].filter(x=>x.status=="published").length,dr=[...data.members,...data.projects].filter(x=>x.status=="draft").length,last=Math.max(0,data.logs[0]?.ts||0);
+  V.innerHTML=`<h1>${t("n.dash")}</h1><div class="grid">`+[["st_p",nf(pub("projects"))],["st_m",nf(pub("members"))+" / "+nf(4)],["st_d",nf(dr)],["st_f",nf(data.media.length)],["st_u",df(last)]].map(([k,v])=>`<div class="card stat"><span>${t(k)}</span><b>${esc(v)}</b></div>`).join("")+`</div><div class="card"><h2>${t("recent")}</h2>`+data.logs.map(l=>`<div class="row"><span>${esc(l.a)} ${esc(l.t)}</span><span>${df(l.ts)}</span></div>`).join("")+`</div>`}
+ else if(view=="media"){V.innerHTML=`<div class="row"><h1>${t("n.media")}</h1><button class="btn p" data-a="upload">${t("upload")}</button></div><p class="hint">${t("limits")}</p><div class="mg">`+(data.media.map(m=>`<div class="mi">${pv(m.type.startsWith("video")?"video":"image",m.id)}<span>${esc(m.name)} · ${mb(m.size)}</span><button class="btn d" data-a="mdel" data-id="${m.id}">${t("del")}</button></div>`).join("")||`<p>${t("empty")}</p>`)+`</div>`}
+ else{const a=data[view+"s"];V.innerHTML=`<div class="row"><h1>${t("n."+view)}</h1>${view=="project"?`<button class="btn p" data-a="new">${t("add")}</button>`:""}</div>`+a.map(i=>`<div class="row"><span>${esc((i.title||i.name)?.[lang]||i.id)} <span class="badge ${esc(i.status)}">${t("s_"+i.status)}</span></span><button class="btn" data-a="edit" data-id="${esc(i.id)}">${t("edit")}</button></div>`).join("")}}
+const bi=(n,l,v,ta)=>{const f=(x,d,p)=>ta?`<textarea id="${n}-${x}" dir="${d}" rows="3" placeholder="${p}">${esc(v?.[x])}</textarea>`:`<input id="${n}-${x}" dir="${d}" placeholder="${p}" value="${esc(v?.[x])}">`;return`<label>${t(l)}</label><div class="two">${f("fa","rtl","فارسی")}${f("en","ltr","English")}</div>`};
+const ui=(n,v)=>`<label for="${n}">${t(n)}</label><input id="${n}" type="url" dir="ltr" value="${esc(v)}">`;
+const mf=(n,k,v)=>`<label>${t(n)}</label><div class="mf" data-k="${k}"><span class="pv">${pv(k,v)}</span><input type="hidden" id="${n}" value="${esc(v)}"><button type="button" class="btn" data-a="pick" data-k="${k}">${t("choose")}</button><button type="button" class="btn" data-a="clear">${t("remove")}</button></div>`;
+function editor(it){ed=it;const m=it.kind=="member";
+ $("#view").innerHTML=`<button class="btn" data-a="back">${t("back")}</button><form class="card" novalidate><h2>${m?t("member")+" "+nf(+it.id.slice(1)):t("n.project")}</h2>`+(m?bi("name","name",it.name)+bi("role","role",it.role)+bi("bio","bio",it.bio,1)+ui("social",it.social)+mf("image","image",it.image)
+ :bi("title","title",it.title)+bi("desc","desc",it.desc,1)+bi("cat","cat",it.cat)+`<label for="tags">${t("tags")}</label><input id="tags" dir="ltr" value="${esc((it.tags||[]).join(", "))}">`+ui("demo",it.demo)+ui("repo",it.repo)+mf("cover","image",it.cover)+mf("video","video",it.video)+`<label><input type="checkbox" id="featured" ${it.featured?"checked":""}> ${t("featured")}</label>`)
+ +`<div class="bar"><button type="button" class="btn" data-a="save" data-s="draft">${t("draft")}</button><button type="button" class="btn p" data-a="save" data-s="published">${t("publish")}</button>${it.status=="published"?`<button type="button" class="btn" data-a="save" data-s="unpublished">${t("unpub")}</button>`:""}${!m&&it.id?`<button type="button" class="btn d" data-a="del">${t("del")}</button>`:""}</div></form>`}
+const g=n=>({fa:$("#"+n+"-fa").value,en:$("#"+n+"-en").value});
+const collect=m=>m?{name:g("name"),role:g("role"),bio:g("bio"),social:$("#social").value,image:$("#image").value}:{title:g("title"),desc:g("desc"),cat:g("cat"),tags:$("#tags").value.split(",").map(x=>x.trim()).filter(Boolean),demo:$("#demo").value,repo:$("#repo").value,cover:$("#cover").value,video:$("#video").value,featured:$("#featured").checked};
+async function save(s){const r=await api("/api/admin/item",{method:"POST",body:{kind:ed.kind,id:ed.id,status:s,data:collect(ed.kind=="member")}});if(!r.ok)return toast(t("neterr"),1);toast(t("saved"));dirty=false;view=ed.kind;await load();show()}
+/* media */
+function renderPick(){const a=data.media.filter(m=>m.type.startsWith(pickKind));$("#pg").innerHTML=a.map(m=>`<button type="button" class="mi" data-a="choose" data-id="${m.id}">${pv(pickKind,m.id)}<span>${esc(m.name)}</span></button>`).join("")||`<p>${t("empty")}</p>`}
+async function upload(files){for(const f of files){toast(t("uploading")+": "+f.name);
+ try{const r=await fetch("/api/admin/media?name="+encodeURIComponent(f.name),{method:"PUT",credentials:"same-origin",headers:{"X-CSRF-Token":csrf},body:f});if(!r.ok)toast(t(r.status==413||r.status==415?"badfile":"neterr")+": "+f.name,1)}catch(e){toast(t("neterr"),1)}}
+ $("#fi").value="";await load();if($("#pick").open)renderPick();else if(!ed)show()}
+const setMedia=(box,id)=>{box.querySelector("input").value=id;box.querySelector(".pv").innerHTML=pv(box.dataset.k,id);dirty=true};
+const go=v=>{if(dirty&&!confirm(t("unsaved")))return;dirty=false;view=v;show()};
+const A={nav:b=>go(b.dataset.v),back:()=>go(view),
+ lang:()=>{if(dirty&&!confirm(t("unsaved")))return;dirty=false;lang=lang=="fa"?"en":"fa";apply();if(!$("#app").hidden)show()},
+ theme:()=>{const n=D.dataset.theme=="midnight-lime"?"cyber-violet":"midnight-lime";D.dataset.theme=n;try{localStorage.setItem("wi-theme",n)}catch(e){}},
+ logout:async()=>{await api("/api/admin/logout",{method:"POST"});location.reload()},
+ new:()=>editor({kind:"project",status:"draft"}),
+ edit:b=>{const k=view,it=data[k+"s"].find(x=>x.id==b.dataset.id);editor({...it,kind:k})},
+ save:b=>save(b.dataset.s),
+ del:async()=>{if(!confirm(t("confirmDel")))return;const r=await api("/api/admin/item",{method:"DELETE",body:{id:ed.id}});if(!r.ok)return toast(t("neterr"),1);dirty=false;view="project";await load();show()},
+ pick:b=>{const box=b.closest(".mf");pickKind=b.dataset.k;pickCb=id=>setMedia(box,id);renderPick();$("#pick").showModal()},
+ clear:b=>setMedia(b.closest(".mf"),""),choose:b=>{pickCb&&pickCb(b.dataset.id);$("#pick").close()},closepick:()=>$("#pick").close(),
+ upload:()=>$("#fi").click(),
+ mdel:async b=>{if(!confirm(t("confirmDel")))return;const r=await api("/api/admin/media",{method:"DELETE",body:{id:b.dataset.id}});if(r.status==409)return toast(t("inuse"),1);if(!r.ok)return toast(t("neterr"),1);await load();show()}};
+document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(b&&A[b.dataset.a])A[b.dataset.a](b)});
+$("#view").addEventListener("input",()=>dirty=true);
+$("#fi").addEventListener("change",e=>upload([...e.target.files]));
+addEventListener("beforeunload",e=>{if(dirty){e.preventDefault();e.returnValue=""}});
+$("#sh").onclick=()=>{const p=$("#p");p.type=p.type=="password"?"text":"password";apply()};
+$("#lf").onsubmit=async e=>{e.preventDefault();$("#err").textContent="";const r=await api("/api/admin/login",{method:"POST",body:{username:$("#u").value,password:$("#p").value}});
+ if(r.ok){$("#p").value="";boot()}else $("#err").textContent=t(r.status==429?"throttled":r.status==401?"invalid":r.status==503?"notcfg":"neterr")};
+apply();boot();
+})();
+</script></body></html>
