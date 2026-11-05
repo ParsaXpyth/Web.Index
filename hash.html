@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ساخت رمزِ رمزنگاری‌شده</title>
+<style>body{font:16px/1.8 system-ui,Tahoma,sans-serif;background:#090B10;color:#F3F6FB;max-width:560px;margin:40px auto;padding:0 18px}input,textarea,button{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid #333;background:#11151D;color:inherit;font:inherit}button{background:#B99AFF;color:#14101f;border:0;cursor:pointer;font-weight:600}textarea{direction:ltr;min-height:120px;font-family:monospace;font-size:13px}small{color:#A5ADBB}</style></head><body>
+<h1>ساخت رمزِ رمزنگاری‌شده</h1>
+<p>رمز را بنویسید تا یک خط هش (PBKDF2-SHA256 با نمک تصادفی) ساخته شود. همه‌چیز فقط داخل مرورگر شما انجام می‌شود و هیچ‌جا ارسال نمی‌شود.</p>
+<input id="p" type="password" placeholder="رمز (حداقل ۱۲ کاراکتر)" autocomplete="new-password"><button id="b">ساخت هش</button>
+<textarea id="o" readonly></textarea><button id="c">کپی</button><p id="m"></p>
+<small>خروجی را در <code>src/credentials.js</code> بین دو گیومه‌ی <code>PASSWORD_HASH</code> بگذارید. رمز اصلی را در هیچ فایلی ننویسید.</small>
+<script>
+const $=s=>document.querySelector(s),b64=u=>btoa(String.fromCharCode(...new Uint8Array(u)));
+$("#b").onclick=async()=>{const pw=$("#p").value;if(pw.length<12){$("#m").textContent="رمز باید حداقل ۱۲ کاراکتر باشد.";return}
+ const salt=crypto.getRandomValues(new Uint8Array(16)),k=await crypto.subtle.importKey("raw",new TextEncoder().encode(pw),"PBKDF2",false,["deriveBits"]);
+ const bits=await crypto.subtle.deriveBits({name:"PBKDF2",hash:"SHA-256",salt,iterations:100000},k,256);
+ $("#o").value="pbkdf2$100000$"+b64(salt)+"$"+b64(bits);$("#m").textContent="آماده است. کپی کنید."};
+$("#c").onclick=()=>{navigator.clipboard.writeText($("#o").value);$("#m").textContent="کپی شد."};
+</script></body></html>
