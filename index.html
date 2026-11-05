@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var th=localStorage.getItem("wi-theme");document.documentElement.dataset.theme=th==="midnight-lime"?th:"cyber-violet"}catch(e){document.documentElement.dataset.theme="cyber-violet"}</script>
 <title>Web.Index — Four Minds. Infinite Possibilities.</title>
 <meta name="description" content="Independent creative coding collective of four developers.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#090B10;--bg2:#11151D;--surface:#171D27;--elev:#202735;--violet:#B99AFF;--cyan:#70E9FF;--glow:rgba(185,154,255,.18);--text:#F3F6FB;--text2:#A5ADBB;--muted:#737F90;--border:rgba(255,255,255,.10);--border-hi:rgba(185,154,255,.40);--r-s:8px;--r-m:14px;--r-l:20px;--r-xl:28px;--maxw:1200px;--pad:40px;--head:"Space Grotesk",system-ui,sans-serif;--body:Inter,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+:root{--bg:#090B10;--bg2:#11151D;--surface:#171D27;--elev:#202735;--violet:#B99AFF;--cyan:#70E9FF;--glow:rgba(185,154,255,.18);--text:#F3F6FB;--text2:#A5ADBB;--muted:#737F90;--border:rgba(255,255,255,.10);--border-hi:rgba(185,154,255,.40);--r-s:8px;--r-m:14px;--r-l:20px;--r-xl:28px;--vhover:#cdb5ff;--maxw:1200px;--pad:40px;--head:"Space Grotesk",system-ui,sans-serif;--body:Inter,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
 @media(max-width:1023px){:root{--pad:28px}}@media(max-width:767px){:root{--pad:18px}}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px;overflow-x:hidden;overflow-x:clip;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.7 var(--body);overflow-x:hidden;overflow-x:clip;width:100%;max-width:100%;position:relative}
@@ -25,7 +26,7 @@ a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid var(--cyan
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-l);padding:24px;transition:border-color .3s,box-shadow .3s,transform .3s;position:relative;overflow:hidden}
 .card:hover{border-color:var(--border-hi);box-shadow:0 0 40px var(--glow);transform:translateY(-3px)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:var(--r-m);border:1px solid var(--border);font-weight:600;font-size:.95rem;background:transparent;color:var(--text);cursor:pointer;transition:border-color .25s,background .25s;font-family:inherit}
-.btn:hover{border-color:var(--border-hi);background:var(--glow)}.btn-p{background:var(--violet);color:#14101f;border-color:var(--violet)}.btn-p:hover{background:#cdb5ff}
+.btn:hover{border-color:var(--border-hi);background:var(--glow)}.btn-p{background:var(--violet);color:#14101f;border-color:var(--violet)}.btn-p:hover{background:var(--vhover)}
 .tag{font:400 .75rem var(--mono);padding:3px 10px;border:1px solid var(--border);border-radius:99px;color:var(--text2)}.tags{display:flex;flex-wrap:wrap;gap:8px}
 .nav{position:sticky;top:12px;z-index:50;margin-top:12px}
 .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 16px;background:rgba(17,21,29,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--border);border-radius:var(--r-l)}
@@ -53,12 +54,52 @@ a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid var(--cyan
 .foot{border-top:1px solid var(--border);padding-block:64px 32px;background:var(--bg2)}
 .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px}.foot h2{font-size:clamp(2rem,5vw,4rem);max-width:16ch;margin-top:20px}
 .foot ul{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px;color:var(--text2)}.foot ul a:hover{color:var(--text)}
+.adm{font:400 .8rem var(--mono);color:var(--muted);display:inline-block;transition:color .2s,transform .2s}.adm:hover{color:var(--violet);transform:translateY(-2px)}
 .foot-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font:400 .8rem var(--mono);color:var(--muted)}
 [dir=rtl] .flip{transform:scaleX(-1)}
 .skip{position:absolute;top:-100px;inset-inline-start:16px;z-index:99;background:var(--surface);padding:8px 12px;border-radius:var(--r-s)}.skip:focus{top:16px}
 .js .rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease-out,transform .6s ease-out}.js .rv.in{opacity:1;transform:none}
 @media(max-width:1023px){.hero,.two{grid-template-columns:1fr;gap:32px}.art-hero{max-width:400px}.team{grid-template-columns:repeat(2,1fr)}.p-lg{grid-column:span 6;grid-row:auto}.p-md{grid-column:span 3}.p-sm{grid-column:span 6}.lab{grid-template-columns:1fr}}
 @media(max-width:767px){.nav-links,.hide-m{display:none}.burger{display:inline-flex}.mpanel.open{display:flex;flex-direction:column;gap:12px;margin-top:8px;padding:20px}.team{grid-template-columns:1fr}.p-md{grid-column:span 6}.foot-top>div:last-child{gap:32px!important}}
+
+/* ===== themes: SVG art follows tokens ===== */
+[stroke="#B99AFF"]{stroke:var(--violet)}[stroke="#70E9FF"]{stroke:var(--cyan)}[stroke="#F3F6FB"]{stroke:var(--text)}
+[fill="#B99AFF"]{fill:var(--violet)}[fill="#70E9FF"]{fill:var(--cyan)}[fill="#171D27"]{fill:var(--surface)}[fill="#11151D"]{fill:var(--bg2)}[fill="#202735"]{fill:var(--elev)}[fill="#A5ADBB"]{fill:var(--text2)}
+stop[stop-color="#B99AFF"]{stop-color:var(--violet)}stop[stop-color="#70E9FF"]{stop-color:var(--cyan)}
+::selection{background:var(--violet);color:#0B0B0C}
+:root[data-theme=midnight-lime]{--bg:#0B0B0C;--bg2:#141416;--surface:#141416;--elev:#1B1B1E;--violet:#C6F432;--cyan:#FFFFFF;--vhover:#B6E52B;--glow:rgba(198,244,50,.12);--text:#FFFFFF;--text2:#B7B7B7;--muted:#8E8E93;--border:rgba(255,255,255,.12);--border-hi:rgba(198,244,50,.55);--r-s:4px;--r-m:6px;--r-l:10px;--r-xl:14px}
+/* lime identity: thin lines, white featured surface, pulsing dot */
+[data-theme=midnight-lime] .sec .rv>.mono:first-child::before{content:"";display:inline-block;width:24px;height:1px;background:var(--violet);margin-inline-end:10px;vertical-align:middle}
+[data-theme=midnight-lime] .hero .mono::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--violet);margin-inline-end:10px;animation:pulse 2s ease-in-out infinite}
+[data-theme=midnight-lime] .btn-p:hover{box-shadow:0 0 24px var(--glow)}
+[data-theme=midnight-lime] .proj .p-lg{--text:#0B0B0C;--text2:#555555;--muted:#555555;--border:rgba(11,11,12,.12);background:#fff;color:#0B0B0C}
+[data-theme=midnight-lime] .p-lg .links,[data-theme=midnight-lime] .p-lg .links a:hover{color:#0B0B0C}
+[data-theme=midnight-lime] .p-lg:hover{border-color:var(--violet);box-shadow:0 0 0 1px var(--violet),0 0 40px var(--glow)}
+@keyframes pulse{50%{opacity:.35}}@keyframes rise{from{opacity:0;transform:translateY(10px)}}@keyframes pop{from{opacity:0;transform:scale(.94)}}
+/* appearance panel */
+.nav-in{position:relative}
+.apanel{display:none;position:absolute;top:calc(100% + 10px);inset-inline-end:0;width:min(300px,100%);padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-l);box-shadow:0 24px 60px -20px rgba(0,0,0,.7);z-index:60}
+.apanel.open{display:block;animation:rise .25s both}
+.opt{display:flex;align-items:center;gap:12px;width:100%;margin-top:10px;padding:12px;border:1px solid var(--border);border-radius:var(--r-m);background:transparent;color:var(--text);cursor:pointer;font:inherit;font-weight:600;text-align:start;transition:border-color .25s,transform .25s,background .25s}
+.opt:hover{transform:translateY(-2px);border-color:var(--border-hi)}.opt[aria-pressed=true]{border-color:var(--violet);background:var(--glow)}
+.sw{display:flex;direction:ltr}.sw i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.3);margin-inline-end:-4px}
+.chk{margin-inline-start:auto;color:var(--violet);opacity:0;transition:opacity .25s}.opt[aria-pressed=true] .chk{opacity:1}
+/* nav indicator, buttons, cards */
+.nav-links a{position:relative;padding-block:4px;transition:color .25s}.nav-links a::after{content:"";position:absolute;inset-inline:0;bottom:-2px;height:1px;background:var(--violet);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+[dir=rtl] .nav-links a::after{transform-origin:right}.nav-links a:hover::after,.nav-links a.act::after{transform:scaleX(1)}.nav-links a.act{color:var(--text)}
+.flip{display:inline-block;transition:transform .25s}.btn:hover .flip{transform:translateX(4px)}[dir=rtl] .btn:hover .flip{transform:scaleX(-1) translateX(4px)}
+.avatar,.art{transition:transform .6s}img.avatar,img.art,video.art{object-fit:cover}video.art{background:var(--bg2)}.card:hover .avatar{transform:scale(1.08)}.card:hover .art{transform:scale(1.05)}
+.social a{display:inline-block;transition:transform .2s,color .2s}.social a:hover{transform:translateY(-2px)}
+.nav-in{animation:rise .6s both}.art-hero{animation:pop .9s .15s both}
+/* process + stack */
+.steps{list-style:none;padding:0;margin:48px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.step{position:relative;padding-top:24px;border-top:1px solid var(--border)}
+.step::before{content:"";position:absolute;top:-4px;inset-inline-start:0;width:7px;height:7px;border-radius:50%;background:var(--violet);box-shadow:0 0 12px var(--glow)}
+.stack{margin-top:40px}.stack .tag{font-size:.9rem;padding:8px 16px}
+@media(max-width:1023px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:767px){.steps{grid-template-columns:1fr;gap:0}.step{border-top:0;border-inline-start:1px solid var(--border);padding:0 0 32px;padding-inline-start:24px}.step::before{top:2px;inset-inline-start:-4px}
+.nav-in{gap:8px;padding:8px 10px}.nav-r{gap:6px}.glass{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--elev)}}
+@media(prefers-reduced-motion:no-preference){.tt *,.tt *::before,.tt *::after{transition:background-color .4s,color .4s,border-color .4s,fill .4s,stroke .4s,stop-color .4s,box-shadow .4s!important}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
 </style>
 </head>
@@ -70,11 +111,16 @@ a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid var(--cyan
     <div class="nav-links"><a href="#about" data-i18n="n.about"></a><a href="#team" data-i18n="n.team"></a><a href="#projects" data-i18n="n.projects"></a><a href="#lab" data-i18n="n.lab"></a></div>
     <div class="nav-r">
       <div role="group" aria-label="Language" style="display:flex;gap:4px"><button class="btn" data-l="en" style="padding:6px 10px">EN</button><button class="btn" data-l="fa" style="padding:6px 10px">FA</button></div>
+      <a class="btn hide-m" id="admbtn" href="/admin" style="padding:8px 12px;font-size:.85rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span data-i18n="f.admin"></span></a>
+      <button class="btn" id="apbtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="ap" style="padding:8px 10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></button>
       <a href="#contact" class="btn btn-p hide-m" data-i18n="n.contact"></a>
       <button class="btn burger" id="burger" aria-expanded="false" aria-label="Menu" style="padding:8px">☰</button>
     </div>
+  <div class="apanel" id="ap" role="dialog" aria-labelledby="apt"><p class="mono" id="apt" data-i18n="ap.t"></p>
+    <button class="opt" data-th="cyber-violet" aria-pressed="true"><span class="sw"><i style="background:#090B10"></i><i style="background:#B99AFF"></i><i style="background:#70E9FF"></i></span><span dir="ltr">Cyber Violet</span><span class="chk" aria-hidden="true">✓</span></button>
+    <button class="opt" data-th="midnight-lime" aria-pressed="false"><span class="sw"><i style="background:#0B0B0C"></i><i style="background:#FFFFFF"></i><i style="background:#C6F432"></i></span><span dir="ltr">Midnight Lime</span><span class="chk" aria-hidden="true">✓</span></button></div>
   </nav>
-  <div class="glass mpanel" id="mp"><a href="#about" data-i18n="n.about"></a><a href="#team" data-i18n="n.team"></a><a href="#projects" data-i18n="n.projects"></a><a href="#lab" data-i18n="n.lab"></a><a href="#contact" class="btn btn-p" style="justify-content:center" data-i18n="n.contact"></a></div>
+  <div class="glass mpanel" id="mp"><a href="#about" data-i18n="n.about"></a><a href="#team" data-i18n="n.team"></a><a href="#projects" data-i18n="n.projects"></a><a href="#lab" data-i18n="n.lab"></a><a href="#contact" class="btn btn-p" style="justify-content:center" data-i18n="n.contact"></a><a href="/admin" class="btn" style="justify-content:center" data-i18n="f.admin"></a></div>
 </div></header>
 
 <main id="main">
@@ -113,9 +159,12 @@ a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid var(--cyan
 <section id="team" class="sec wrap"><div class="rv"><p class="mono" data-i18n="t.label"></p><h2 class="h2" data-i18n="t.h"></h2></div><div class="team" id="team-grid"></div></section>
 <section id="projects" class="sec wrap"><div class="rv"><p class="mono" data-i18n="p.label"></p><h2 class="h2" data-i18n="p.h"></h2></div><div class="proj" id="proj-grid"></div></section>
 <section id="lab" class="sec wrap"><div class="rv"><p class="mono" data-i18n="l.label"></p><h2 class="h2" data-i18n="l.h"></h2></div><div class="lab" id="lab-grid"></div></section>
+<section id="process" class="sec wrap"><div class="rv"><p class="mono" data-i18n="pr.label"></p><h2 class="h2" data-i18n="pr.h"></h2></div><ol class="steps" id="steps"></ol></section>
+<section id="stack" class="sec wrap"><div class="rv"><p class="mono" data-i18n="s.label"></p><h2 class="h2" data-i18n="s.h"></h2></div><div class="tags stack" id="stack-list"></div></section>
+<section id="contact" class="sec wrap"><div class="rv"><p class="mono" data-i18n="c.label"></p><h2 class="h2" style="max-width:18ch" data-i18n="c.h"></h2><p class="lead" style="margin-top:24px" data-i18n="c.p"></p><div class="ctas"><a class="btn btn-p" href="#">GitHub <span class="flip">↗</span></a><a class="btn" href="#">LinkedIn <span class="flip">↗</span></a><a class="btn" href="#">Web <span class="flip">↗</span></a></div></div></section>
 </main>
 
-<footer id="contact" class="foot"><div class="wrap">
+<footer id="footer" class="foot"><div class="wrap">
   <div class="foot-top">
     <div><span id="logo2"></span><h2 data-i18n="f.slogan"></h2><p class="lead" style="margin-top:16px" data-i18n="h.sub"></p></div>
     <div style="display:flex;gap:64px">
@@ -123,7 +172,7 @@ a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid var(--cyan
       <div><p class="mono" data-i18n="f.social"></p><ul><li><a href="#">GitHub</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Web</a></li></ul></div>
     </div>
   </div>
-  <div class="foot-bot"><span data-i18n="f.rights"></span><span data-i18n="f.stmt"></span></div>
+  <div class="foot-bot"><span data-i18n="f.rights"></span><span data-i18n="f.stmt"></span><a class="adm" href="/admin" data-i18n="f.admin"></a><button class="btn" id="top" data-i18n="f.top" style="padding:6px 12px;font-size:.8rem"></button></div>
 </div></footer>
 
 <script>
@@ -138,7 +187,9 @@ en:{skip:"Skip to content","n.about":"About","n.team":"Team","n.projects":"Proje
 "t.label":"02 / THE PEOPLE","t.h":"Four minds. One creative direction.","t.name":"Member Name","t.role":"Developer Role","t.bio":"Short placeholder biography. Replace this with a real introduction.","t.social":["GitHub","LinkedIn","Portfolio"],
 "p.label":"03 / SELECTED WORK","p.h":"Things we've brought to life.","p.title":"Project Title","p.cat":["Featured Project","Web App","Interactive","Experiment"],"p.desc":"Short placeholder description of the project.","p.demo":"Demo","p.repo":"Repository",
 "l.label":"04 / EXPERIMENTS","l.h":"Curiosity has no framework.","l.items":["Generative Field","Type in Motion","Interface Study"],"l.d":"Placeholder experiment note.",
-"f.slogan":"Four Minds. Infinite Possibilities.","f.stmt":"A visual prototype. Built with HTML, CSS and curiosity.","f.rights":"© 2026 Web.Index. All rights reserved.","f.nav":"Navigate","f.social":"Social"},
+"f.slogan":"Four Minds. Infinite Possibilities.","f.stmt":"A visual prototype. Built with HTML, CSS and curiosity.","f.rights":"© 2026 Web.Index. All rights reserved.","f.nav":"Navigate","f.social":"Social","f.top":"↑ Back to top","f.admin":"Admin Panel","ap.t":"Appearance",
+"pr.label":"05 / HOW WE WORK","pr.h":"From spark to shipped.","pr.items":[["Discover","Explore the problem and gather ideas."],["Design","Develop concepts and visual direction."],["Prototype","Turn ideas into working experiments."],["Build","Create and refine the final experience."]],
+"s.label":"06 / STACK","s.h":"Built with the web.","c.label":"07 / CONTACT","c.h":"Have an idea worth building?","c.p":"Find us on the channels below."},
 fa:{skip:"پرش به محتوا","n.about":"درباره","n.team":"تیم","n.projects":"پروژه‌ها","n.lab":"آزمایشگاه","n.contact":"تماس",
 "h.tag":"چهار ذهن. امکانات بی‌پایان.","h.pre":"ما ایده‌ها را به ","h.hl":"رابط‌های کاربری","h.post":" تبدیل می‌کنیم.",
 "h.desc":"چهار ذهن کنجکاو که فضای میان طراحی و کد را کاوش می‌کنند. سریع نمونه‌سازی می‌کنیم، جسورانه آزمایش می‌کنیم و تجربه‌های دیجیتالی می‌سازیم که ماندگار بمانند.",
@@ -148,8 +199,11 @@ fa:{skip:"پرش به محتوا","n.about":"درباره","n.team":"تیم","n.
 "t.label":"۰۲ / آدم‌ها","t.h":"چهار ذهن. یک مسیر خلاق.","t.name":"نام عضو","t.role":"نقش توسعه‌دهنده","t.bio":"زندگی‌نامه کوتاه نمونه. این متن را با معرفی واقعی جایگزین کنید.","t.social":["گیت‌هاب","لینکدین","نمونه‌کار"],
 "p.label":"۰۳ / کارهای منتخب","p.h":"چیزهایی که به زندگی آورده‌ایم.","p.title":"عنوان پروژه","p.cat":["پروژه ویژه","وب‌اپلیکیشن","تعاملی","آزمایشی"],"p.desc":"توضیح کوتاه نمونه درباره پروژه.","p.demo":"دمو","p.repo":"مخزن کد",
 "l.label":"۰۴ / آزمایش‌ها","l.h":"کنجکاوی چارچوب نمی‌شناسد.","l.items":["میدان مولد","تایپ در حرکت","مطالعه رابط"],"l.d":"یادداشت نمونه آزمایش.",
-"f.slogan":"چهار ذهن. امکانات بی‌پایان.","f.stmt":"یک نمونه اولیه بصری. ساخته‌شده با HTML، CSS و کنجکاوی.","f.rights":"© ۲۰۲۶ وب‌ایندکس. همه حقوق محفوظ است.","f.nav":"پیمایش","f.social":"شبکه‌ها"}};
+"f.slogan":"چهار ذهن. امکانات بی‌پایان.","f.stmt":"یک نمونه اولیه بصری. ساخته‌شده با HTML، CSS و کنجکاوی.","f.rights":"© ۲۰۲۶ وب‌ایندکس. همه حقوق محفوظ است.","f.nav":"پیمایش","f.social":"شبکه‌ها","f.top":"↑ بازگشت به بالا","f.admin":"مدیریت سایت","ap.t":"ظاهر",
+"pr.label":"۰۵ / روش کار","pr.h":"از جرقه تا انتشار.","pr.items":[["کشف","مسئله را بررسی می‌کنیم و ایده جمع می‌کنیم."],["طراحی","مفهوم و جهت بصری را شکل می‌دهیم."],["نمونه‌سازی","ایده‌ها را به آزمایش‌های کارا تبدیل می‌کنیم."],["ساخت","تجربه نهایی را می‌سازیم و صیقل می‌دهیم."]],
+"s.label":"۰۶ / ابزارها","s.h":"ساخته‌شده با وب.","c.label":"۰۷ / تماس","c.h":"ایده‌ای برای ساختن دارید؟","c.p":"ما را در شبکه‌های زیر پیدا کنید."}};
 const members=[["TypeScript","WebGL","React"],["Design Systems","CSS","Motion"],["Node.js","APIs","Tooling"],["Canvas","Shaders","Audio"]];
+const stack=["HTML","CSS","JavaScript","SVG"]; // editable: list only technologies actually used
 const projects=[{s:"lg",a:0,tags:["HTML","SVG","CSS"]},{s:"md",a:1,tags:["JavaScript","D3"]},{s:"md",a:2,tags:["Canvas","TypeScript"]},{s:"sm",a:3,tags:["WebGL","GLSL"]}];
 const logo=s=>`<span class="logo"><svg width="${s}" height="${s}" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="#171D27" stroke="#B99AFF" stroke-opacity=".6"/><path d="M6 9l4 11 4-7 4 7 4-11" fill="none" stroke="#F3F6FB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span dir="ltr">Web.Index</span></span>`;
 const art=(v,label)=>{let s="";const g=`<linearGradient id="g${v}" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#B99AFF" stop-opacity=".7"/><stop offset="1" stop-color="#70E9FF" stop-opacity=".2"/></linearGradient>`;
@@ -159,10 +213,14 @@ const art=(v,label)=>{let s="";const g=`<linearGradient id="g${v}" x1="0" y1="0"
   if(v==2)s+=`<path d="M0 ${8+i*9} Q100 ${i*16} 200 ${112-i*8}" fill="none" stroke="${i%4?"#B99AFF":"#70E9FF"}" stroke-opacity=".55"/>`;
   if(v==3)s+=`<path d="M${12+(i%8)*24} ${20+Math.floor(i/8)*34} l9 16 h-18z" fill="${i%5?"none":"url(#g3)"}" stroke="#B99AFF" stroke-opacity=".5"/>`}
  return `<svg class="art" viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${label}"><defs>${g}</defs><rect width="200" height="120" fill="#11151D"/>${s}</svg>`};
-let lang="en";try{lang=localStorage.getItem("wi-lang")==="fa"?"fa":"en"}catch(e){}
+let lang="fa";try{lang=localStorage.getItem("wi-lang")==="en"?"en":"fa"}catch(e){}
 const $=s=>document.querySelector(s),t=k=>L[lang][k],num=i=>lang=="fa"?"۰"+(i+1):"0"+(i+1);
+let CMS={};const esc=s=>String(s).replace(/[&<>"']/g,c=>"&#"+c.charCodeAt(0)+";");
+const M=(i,f)=>{const m=(CMS.members||[])[i],v=m&&m[f]&&m[f][lang];return v?esc(v):t("t."+f)+(f=="name"?" "+num(i):"")};
+const P=(i,f)=>{const p=(CMS.projects||[])[i],v=p&&p[f];if(f=="demo"||f=="repo")return v?esc(v):"#";const x=v&&v[lang];return x?esc(x):f=="title"?t("p.title")+" "+num(i):f=="desc"?t("p.desc"):t("p.cat")[i]||""};
+fetch("/api/content").then(r=>r.ok?r.json():null).then(d=>{if(d){CMS=d;render()}}).catch(()=>{});
 const ic={gh:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3.1-.3 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-1 2.6V22"/></svg>'};
-function observe(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"-60px"});
+function observe(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target,i=Math.min([...el.parentElement.children].indexOf(el),4);el.style.transitionDelay=i*80+"ms";el.classList.add("in");setTimeout(()=>el.style.transitionDelay="",1200);io.unobserve(el)}}),{rootMargin:"-60px"});
  document.querySelectorAll(".rv:not(.in)").forEach(el=>io.observe(el))}
 function render(){
  const h=document.documentElement;h.lang=lang;h.dir=lang=="fa"?"rtl":"ltr";try{localStorage.setItem("wi-lang",lang)}catch(e){}
@@ -172,18 +230,35 @@ function render(){
  $("#logo").innerHTML=logo(28);$("#logo2").innerHTML=logo(36);
  $("#hh").innerHTML=`${t("h.pre")}<span class="hl">${t("h.hl")}</span>${t("h.post")}`;
  $("#meta").innerHTML=t("a.meta").map(m=>`<span class="tag">${m}</span>`).join("");$("#four").textContent=t("a.four");
- $("#team-grid").innerHTML=members.map((m,i)=>`<article class="card rv"><svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="${t("t.name")} ${num(i)}"><rect width="64" height="64" fill="#202735"/><circle cx="32" cy="32" r="22" fill="none" stroke="#B99AFF" stroke-opacity=".6"${i%2?' stroke-dasharray="3 5"':""}/><circle cx="32" cy="32" r="10" fill="#B99AFF" fill-opacity="${.25+i*.12}"/><circle cx="${32+22*Math.cos(i*1.6)}" cy="${32+22*Math.sin(i*1.6)}" r="3" fill="#70E9FF"/></svg>
- <h3 style="font-size:1.35rem">${t("t.name")} ${num(i)}</h3><p class="mono" style="margin:6px 0 12px">${t("t.role")}</p><p style="color:var(--text2);font-size:.95rem;margin-bottom:16px">${t("t.bio")}</p>
+ $("#team-grid").innerHTML=members.map((m,i)=>`<article class="card rv"><svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="${M(i,"name")}"><rect width="64" height="64" fill="#202735"/><circle cx="32" cy="32" r="22" fill="none" stroke="#B99AFF" stroke-opacity=".6"${i%2?' stroke-dasharray="3 5"':""}/><circle cx="32" cy="32" r="10" fill="#B99AFF" fill-opacity="${.25+i*.12}"/><circle cx="${32+22*Math.cos(i*1.6)}" cy="${32+22*Math.sin(i*1.6)}" r="3" fill="#70E9FF"/></svg>
+ <h3 style="font-size:1.35rem">${M(i,"name")}</h3><p class="mono" style="margin:6px 0 12px">${M(i,"role")}</p><p style="color:var(--text2);font-size:.95rem;margin-bottom:16px">${M(i,"bio")}</p>
  <div class="tags" dir="ltr">${m.map(x=>`<span class="tag">${x}</span>`).join("")}</div><div class="social">${t("t.social").map(s=>`<a href="#">${s}</a>`).join("")}</div></article>`).join("");
- $("#proj-grid").innerHTML=projects.map((p,i)=>`<article class="card p-${p.s} rv${p.s=="lg"?" glass":""}"><div class="thumb">${art(p.a,t("p.title")+" "+num(i))}</div><div class="body"><p class="mono">${t("p.cat")[i]}</p>
- <h3 style="font-size:${p.s=="lg"?"2rem":"1.3rem"}">${t("p.title")} ${num(i)}</h3><p style="color:var(--text2);font-size:.95rem">${t("p.desc")}</p><div class="tags" dir="ltr">${p.tags.map(x=>`<span class="tag">${x}</span>`).join("")}</div>
- <div class="links"><a href="#">${t("p.demo")} <span class="flip" style="display:inline-block">↗</span></a><a href="#">${ic.gh} ${t("p.repo")}</a></div></div></article>`).join("");
+ $("#proj-grid").innerHTML=Array.from({length:Math.max(projects.length,(CMS.projects||[]).length)},(_,i)=>projects[i]||{s:"md",a:i%4,tags:[]}).map((p,i)=>`<article class="card p-${p.s} rv${p.s=="lg"?" glass":""}"><div class="thumb">${art(p.a,t("p.title")+" "+num(i))}</div><div class="body"><p class="mono">${P(i,"cat")}</p>
+ <h3 style="font-size:${p.s=="lg"?"2rem":"1.3rem"}">${P(i,"title")}</h3><p style="color:var(--text2);font-size:.95rem">${P(i,"desc")}</p><div class="tags" dir="ltr">${((CMS.projects||[])[i]?.tags||p.tags).map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div>
+ <div class="links"><a href="${P(i,"demo")}">${t("p.demo")} <span class="flip" style="display:inline-block">↗</span></a><a href="${P(i,"repo")}">${ic.gh} ${t("p.repo")}</a></div></div></article>`).join("");
  $("#lab-grid").innerHTML=t("l.items").map((x,i)=>`<article class="card rv">${art((i+1)%4,x)}<span class="ghost" aria-hidden="true" dir="ltr">${["{ }","Aa","</>"][i]}</span>
  <div class="glass cap"><p class="mono">${num(i)}</p><h3 style="font-size:1.2rem">${x}</h3><p style="color:var(--text2);font-size:.9rem">${t("l.d")}</p></div></article>`).join("");
+ ;(CMS.members||[]).length&&document.querySelectorAll("#team-grid .avatar").forEach((a,i)=>{const m=CMS.members[i];if(m&&m.image){const im=new Image(64,64);im.className="avatar";im.src=m.image;im.alt=m.name&&m.name[lang]||"";im.loading="lazy";a.replaceWith(im)}});
+ (CMS.projects||[]).length&&document.querySelectorAll("#proj-grid .thumb").forEach((th,i)=>{const p=CMS.projects[i];if(!p||!(p.video||p.cover))return;let e;if(p.video){e=document.createElement("video");e.src=p.video;e.controls=true;e.preload="metadata";e.playsInline=true;if(p.cover)e.poster=p.cover}else{e=new Image();e.src=p.cover;e.alt=p.title&&p.title[lang]||"";e.loading="lazy"}e.className="art";th.replaceChildren(e)});
+ $("#steps").innerHTML=t("pr.items").map((x,i)=>`<li class="step rv"><p class="mono">${num(i)}</p><h3 style="font-size:1.3rem;margin:8px 0">${x[0]}</h3><p style="color:var(--text2);font-size:.95rem">${x[1]}</p></li>`).join("");
+ $("#stack-list").innerHTML=stack.map(x=>`<span class="tag" dir="ltr">${x}</span>`).join("");
+ const y=new Date().getFullYear();$('[data-i18n="f.rights"]').textContent=t("f.rights").replace(/2026|۲۰۲۶/,lang=="fa"?y.toLocaleString("fa-IR",{useGrouping:false}):y);
+ $("#apbtn").setAttribute("aria-label",t("ap.t"));$("#admbtn").setAttribute("aria-label",t("f.admin"));
  observe()}
 document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{lang=b.dataset.l;render()});
 const bg=$("#burger"),mp=$("#mp");bg.onclick=()=>{const o=mp.classList.toggle("open");bg.setAttribute("aria-expanded",o);bg.textContent=o?"✕":"☰"};
 mp.querySelectorAll("a").forEach(a=>a.onclick=()=>{mp.classList.remove("open");bg.textContent="☰"});
+const ap=$("#ap"),apb=$("#apbtn"),setPanel=o=>{ap.classList.toggle("open",o);apb.setAttribute("aria-expanded",o)};
+apb.onclick=e=>{e.stopPropagation();setPanel(!ap.classList.contains("open"))};
+document.addEventListener("click",e=>{if(!ap.contains(e.target))setPanel(false)});
+document.addEventListener("keydown",e=>{if(e.key=="Escape"&&ap.classList.contains("open")){setPanel(false);apb.focus()}});
+function setTheme(th,save){const h=document.documentElement;if(save){h.classList.add("tt");setTimeout(()=>h.classList.remove("tt"),500);try{localStorage.setItem("wi-theme",th)}catch(e){}}
+ h.dataset.theme=th;document.querySelectorAll("[data-th]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.th==th))}
+document.querySelectorAll("[data-th]").forEach(b=>b.onclick=()=>setTheme(b.dataset.th,1));
+setTheme(document.documentElement.dataset.theme||"cyber-violet");
+$("#top").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+const secIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll(".nav-links a").forEach(a=>a.classList.toggle("act",a.getAttribute("href")=="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("main section[id]").forEach(x=>secIO.observe(x));
 render();
 </script>
 </body>
