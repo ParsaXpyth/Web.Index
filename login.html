@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="fa" dir="rtl" data-theme="cyber-violet"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; connect-src 'self'; base-uri 'none'; form-action 'none'"><title>Web.Index — Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet"><style>
+:root{--bg:#090B10;--bg2:#11151D;--surface:#171D27;--violet:#B99AFF;--text:#F3F6FB;--text2:#A5ADBB;--border:rgba(255,255,255,.1);--glow:rgba(185,154,255,.18);--on:#14101f;--r:14px}
+:root[data-theme=midnight-lime]{--bg:#0B0B0C;--bg2:#141416;--surface:#141416;--violet:#C6F432;--text:#fff;--text2:#B7B7B7;--glow:rgba(198,244,50,.12);--r:8px}
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.6 Inter,Vazirmatn,system-ui,sans-serif}
+[lang=fa] body,[lang=fa] input,[lang=fa] textarea,[lang=fa] button{font-family:Vazirmatn,sans-serif}button,input,textarea{font:inherit;color:inherit}h1,h2{margin:0 0 8px}a{color:var(--violet)}
+.btn{padding:10px 16px;border:1px solid var(--border);border-radius:var(--r);background:transparent;cursor:pointer;transition:border-color .2s,background .2s}.btn:hover{border-color:var(--violet);background:var(--glow)}.btn.p{background:var(--violet);color:var(--on);border-color:var(--violet)}.btn.d{color:#ff8a8a}.btn:disabled{opacity:.5;cursor:wait}
+input,textarea{width:100%;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r)}input[type=checkbox]{width:auto}
+input:focus,textarea:focus,.btn:focus-visible{outline:2px solid var(--violet);outline-offset:2px}label{display:block;margin:14px 0 6px;color:var(--text2);font-size:.85rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-top:16px}.hint{color:var(--text2);font-size:.85rem}.bar{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+#err,.msg{min-height:1.6em;margin:10px 0 0}#err{color:#ff8a8a}.pw{display:flex;gap:8px}
+.login{min-height:100vh;display:grid;place-items:center;align-content:center;padding:18px;position:relative;overflow:hidden}.login .card{width:min(420px,100%);position:relative;z-index:1;animation:rise .5s both;margin-top:0}
+.orbit{position:absolute;inset:0;margin:auto;width:min(720px,140vw);height:auto;color:var(--violet);opacity:.35;pointer-events:none}.mark{color:var(--violet);margin-bottom:12px}
+.back{position:relative;z-index:1;margin-top:16px;color:var(--text2);font-size:.85rem}
+.shell{display:grid;grid-template-columns:230px 1fr;min-height:100vh}aside{background:var(--bg2);border-inline-end:1px solid var(--border);padding:20px 14px;display:flex;flex-direction:column;gap:6px}
+aside .btn{text-align:start;border-color:transparent}aside .btn[aria-current=true]{border-color:var(--violet);background:var(--glow)}aside hr{flex:1;border:0}
+main.m{padding:24px;min-width:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}.stat b{display:block;font-size:2rem}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--border)}
+.badge{font-size:.75rem;padding:2px 10px;border:1px solid var(--border);border-radius:99px;color:var(--text2)}.badge.published{color:var(--violet);border-color:var(--violet)}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mf{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pv{width:88px;height:64px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;display:grid;place-items:center;background:var(--bg2);color:var(--text2)}
+.pv img,.pv video,.mi img,.mi video{width:100%;height:100%;object-fit:cover;display:block}
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-top:14px}.mi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:8px;cursor:pointer;text-align:start;display:flex;flex-direction:column;gap:6px}
+.mi:hover{border-color:var(--violet)}.mi>img,.mi>video{height:90px}.mi span{font-size:.75rem;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+dialog{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:var(--r);width:min(720px,94vw);max-height:86vh}dialog::backdrop{background:rgba(0,0,0,.65)}
+#toast{position:fixed;inset-inline:16px;bottom:16px;max-width:380px;padding:12px 16px;background:var(--surface);border:1px solid var(--violet);border-radius:var(--r);display:none;z-index:99}#toast.show{display:block;animation:rise .25s both}#toast.bad{border-color:#ff8a8a}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+@media(max-width:767px){.shell{grid-template-columns:1fr}aside{flex-direction:row;overflow-x:auto;border-inline-end:0;border-bottom:1px solid var(--border);padding:10px}aside .btn{white-space:nowrap}aside hr,aside b{display:none}.two{grid-template-columns:1fr}main.m{padding:16px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body><main class="login"><svg class="orbit" viewBox="0 0 400 400" aria-hidden="true" fill="none" stroke="currentColor"><circle cx="200" cy="200" r="70" stroke-opacity=".5"/><circle cx="200" cy="200" r="110" stroke-opacity=".6" stroke-dasharray="2 8"/><circle cx="200" cy="200" r="150" stroke-opacity=".5"/><circle cx="200" cy="200" r="190" stroke-opacity=".4" stroke-dasharray="2 8"/><circle cx="350" cy="200" r="4" fill="currentColor"/><circle cx="90" cy="200" r="3" fill="currentColor"/></svg>
+<form class="card" id="lf" novalidate><div class="mark"><svg width="36" height="36" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="none" stroke="currentColor" stroke-opacity=".6"/><path d="M6 9l4 11 4-7 4 7 4-11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h1 data-i="login"></h1><label for="u" data-i="user"></label><input id="u" dir="ltr" value="Theo-Parsa" autocomplete="username" required>
+<label for="p" data-i="pass"></label><div class="pw"><input id="p" type="password" dir="ltr" autocomplete="current-password" required><button type="button" class="btn" id="sh"></button></div>
+<p id="err" role="alert"></p><div class="bar"><button class="btn p" id="go" data-i="signin"></button><button type="button" class="btn" id="lg">EN</button><button type="button" class="btn" id="th" aria-label="Theme">◐</button></div></form>
+<a class="back" href="../index.html" data-i="backsite"></a><a class="back" href="passwords.html" data-i="pwpage"></a></main>
+<script>
+(()=>{const D=document.documentElement,$=s=>document.querySelector(s);let lang="fa";
+try{lang=localStorage.getItem("wi-lang")==="en"?"en":"fa";D.dataset.theme=localStorage.getItem("wi-theme")==="midnight-lime"?"midnight-lime":"cyber-violet"}catch(e){}
+try{const s=JSON.parse(sessionStorage.getItem("wi-s")||"null");if(s&&s.exp>Date.now()){location.replace("panel.html");return}}catch(e){}
+const enc=new TextEncoder(),dec=new TextDecoder();
+const b64=u=>{let s="";const a=new Uint8Array(u);for(let i=0;i<a.length;i+=0x8000)s+=String.fromCharCode(...a.subarray(i,i+0x8000));return btoa(s)};
+const unb64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+/* VAULT FORMULA: key = PBKDF2-HMAC-SHA256(username + "\0" + password, random 16-byte salt, iter) -> 256-bit AES-GCM key.
+   vault.json = { v, iter, salt, iv, ct } where ct = AES-GCM( JSON{ GitHub token + repo } ). A wrong username/password fails the GCM auth tag. */
+async function vkey(user,pw,salt,iter,use){const k=await crypto.subtle.importKey("raw",enc.encode(user+"\0"+pw),"PBKDF2",false,["deriveKey"]);return crypto.subtle.deriveKey({name:"PBKDF2",hash:"SHA-256",salt,iterations:iter},k,{name:"AES-GCM",length:256},false,[use])}
+async function seal(user,pw,obj,iter=600000){const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12)),k=await vkey(user,pw,salt,iter,"encrypt");
+ return{v:1,iter,salt:b64(salt),iv:b64(iv),ct:b64(await crypto.subtle.encrypt({name:"AES-GCM",iv},k,enc.encode(JSON.stringify(obj))))}}
+async function unseal(user,pw,v){if(!(v.iter>=1e5&&v.iter<=5e6))throw 0;const k=await vkey(user,pw,unb64(v.salt),v.iter,"decrypt");return JSON.parse(dec.decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:unb64(v.iv)},k,unb64(v.ct))))}
+const S={fa:{login:"ورود مدیر",user:"نام کاربری",pass:"گذرواژه",show:"نمایش",hide:"پنهان",signin:"ورود",invalid:"نام کاربری یا گذرواژه نادرست است.",novault:"فایل رمز هنوز ساخته نشده است. از «مدیریت رمز» استفاده کنید.",backsite:"بازگشت به سایت",pwpage:"مدیریت رمز",wait:"در حال بررسی…"},
+en:{login:"Admin sign in",user:"Username",pass:"Password",show:"Show",hide:"Hide",signin:"Sign in",invalid:"Incorrect username or password.",novault:"The password file hasn't been created yet. Use Password management.",backsite:"Back to site",pwpage:"Password management",wait:"Checking…"}};
+const t=k=>S[lang][k]||k;
+function apply(){D.lang=lang;D.dir=lang=="fa"?"rtl":"ltr";try{localStorage.setItem("wi-lang",lang)}catch(e){}document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t(e.dataset.i));$("#lg").textContent=lang=="fa"?"EN":"FA";$("#sh").textContent=t($("#p").type=="password"?"show":"hide")}
+$("#lg").onclick=()=>{lang=lang=="fa"?"en":"fa";apply()};
+$("#th").onclick=()=>{const n=D.dataset.theme=="midnight-lime"?"cyber-violet":"midnight-lime";D.dataset.theme=n;try{localStorage.setItem("wi-theme",n)}catch(e){}};
+$("#sh").onclick=()=>{const p=$("#p");p.type=p.type=="password"?"text":"password";apply()};
+let vault=null;fetch("vault.json",{cache:"no-store"}).then(r=>r.json()).then(v=>{vault=v;if(!v.ct)$("#err").textContent=t("novault")}).catch(()=>{$("#err").textContent=t("novault")});
+$("#lf").onsubmit=async e=>{e.preventDefault();const err=$("#err"),go=$("#go");err.textContent="";if(!vault||!vault.ct){err.textContent=t("novault");return}
+ go.disabled=true;err.textContent=t("wait");
+ try{const s=await unseal($("#u").value,$("#p").value,vault);sessionStorage.setItem("wi-s",JSON.stringify({...s,exp:Date.now()+288e5}));localStorage.removeItem("wi-f");location.replace("panel.html");return}
+ catch(x){const f=(+localStorage.getItem("wi-f")||0)+1;try{localStorage.setItem("wi-f",f)}catch(e){}err.textContent=t("invalid");await new Promise(r=>setTimeout(r,Math.min(15,f*1.5)*1000))}
+ go.disabled=false};
+apply()})();
+</script></body></html>
